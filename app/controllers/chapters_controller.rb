@@ -1,5 +1,6 @@
 class ChaptersController < ApplicationController
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
+  before_action :set_story
 
   # GET /chapters
   # GET /chapters.json
@@ -65,6 +66,10 @@ class ChaptersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chapter
       @chapter = Chapter.find(params[:id])
+    end
+
+    def set_story
+      @story = Story.find(params[:story_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
