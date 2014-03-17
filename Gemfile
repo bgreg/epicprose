@@ -48,3 +48,4 @@ gem 'font-awesome-rails'
 gem 'zurb-foundation'
 gem 'rspec', group: [:development, :test]
 gem 'capybara'
+gem 'ruby-imgur'
