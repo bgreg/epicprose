@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-gem 'mysql2'
+gem  'pg'
 
 
 # Use SCSS for stylesheets
