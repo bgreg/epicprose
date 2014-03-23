@@ -2,5 +2,9 @@
 
 FactoryGirl.define do
   factory :story do
+    title "MyString"
+    picture_url "MyString"
+    user_id 1
+    genre_id 1
   end
 end

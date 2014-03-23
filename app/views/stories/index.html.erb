@@ -5,8 +5,8 @@
     <tr>
       <th>Title</th>
       <th>Picture url</th>
-      <th>Genre</th>
       <th>User</th>
+      <th>Genre</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= story.title %></td>
         <td><%= story.picture_url %></td>
-        <td><%= story.genre_id %></td>
         <td><%= story.user_id %></td>
+        <td><%= story.genre_id %></td>
         <td><%= link_to 'Show', story %></td>
         <td><%= link_to 'Edit', edit_story_path(story) %></td>
         <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
