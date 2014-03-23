@@ -40,3 +40,15 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def long_string
+ "Donec sed odio dui. Donec sed odio dui. "+
+ "Fusce dapibus, tellus ac cursus commodo, "+
+ "tortor mauris condimentum nibh, ut fermentum "+
+ "massa justo sit amet risus. Sed posuere consectetur"+
+ "est at lobortis. Maecenas faucibus mollis interdum." 
+end
+
+def short_string
+ "Donec sed odio dui. Donec sed odio dui. "
+end
