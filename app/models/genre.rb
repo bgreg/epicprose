@@ -1,4 +1,8 @@
 class Genre < ActiveRecord::Base
-  attr_accessible :body
   belongs_to :story
+
+private
+  def genre_params
+    params.require(:body).permit(:body)
+  end
 end

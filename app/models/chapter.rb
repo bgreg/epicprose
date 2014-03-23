@@ -1,12 +1,19 @@
 class Chapter < ActiveRecord::Base
-  # todo: add validation and attr_accessors
-  # update migrations
-  # fix nested resource links
-  # make everything work without any front end work
 
-  attr_accessible :body
+  # Relationships
+  #
+  #
   belongs_to :story
   belongs_to :user
 
+  # Validations
+  # 
+  #
   validates :body, presence: true, length: { maximum: 120}
+
+private
+
+  def chapter_params
+    params.require(:body).permit(:body)
+  end
 end
