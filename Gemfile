@@ -37,7 +37,7 @@ gem 'ruby-imgur'
 gem 'rails-footnotes', github: 'josevalim/rails-footnotes', group: :development
 
 group :development, :test do
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'debugger'
   gem 'factory_girl_rails'
   gem 'capybara'
