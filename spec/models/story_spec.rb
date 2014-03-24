@@ -15,16 +15,18 @@ describe Story do
       story.save
       story.chapters.length.should be(6)
     end
+
     it "should save with a valid url" do 
       expect{
         story = Story.new( title: "test", picture_url: "https://www.rubygems.com" )
-        saved_story = story.save
+        story.save
       }.to change(Story, :count).by(1)
     end
+
     it "should allow titles less than 120 characters and greater than 2" do 
       expect{
         story = Story.new( title: ValidString.short, picture_url: "https://www.rubygems.com")
-        saved_story = story.save
+        story.save
       }.to change(Story, :count).by(1)
     end
   end
@@ -55,42 +57,21 @@ describe Story do
     it "should not save without valid title" do
       expect{
         story = Story.new(picture_url: "https://www.rubygems.com")
-        saved_story = story.save
+        story.save
       }.to change(Story, :count).by(0)
-    end
-
-    it "should not save without a picutre_url" do
-      expect{
-        story = Story.new(title: "test" )
-        saved_story = story.save
-      }.to change(Story, :count).by(0)
-    end
-
-    it "should not save with a mal-formed url" do
-      expect{
-        story = Story.new( title: "test", picture_url: "test" )
-        saved_story = story.save
-      }.to change(Story, :count).by(0)
-    end
-
-
-    it "should return a validation message on malformed urls" do 
-      story = Story.new( title: "test", picture_url: "rubygemscom" )
-      story.save
-      expect(story.errors.messages[:picture_url]).to include("Valid URL is required")
     end
 
     it "should not allow titles shorter than 2 characters" do 
       expect{
         story = Story.new(title: "1", picture_url: "https://www.rubygems.com")
-        saved_story = story.save
+        story.save
       }.to change(Story, :count).by(0)
     end
 
     it "should not allow titles greater than 120 characters" do 
       expect{ 
         story = Story.new( title: ValidString.long, picture_url: "https://www.rubygems.com")
-        saved_story = story.save
+        story.save
       }.to change(Story, :count).by(0)
     end
   end
