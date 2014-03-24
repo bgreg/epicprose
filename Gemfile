@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-gem  'pg'
 
-
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
@@ -34,13 +33,17 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
 gem 'ruby-imgur'
-gem 'rails-footnotes', github: 'josevalim/rails-footnotes', group: :development
 
 group :development, :test do
+  gem 'rails-footnotes'
   gem 'rspec-rails'
   gem 'debugger'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'faker'
+end
+
+group :production do 
+  gem 'pg'
 end
