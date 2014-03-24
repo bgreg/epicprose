@@ -18,7 +18,7 @@ describe Chapter do
 
   it "should not allow me to save a body attribute of more than 120 " do 
     expect {
-      @chapter.body = long_string
+      @chapter.body = ValidString.long
       @chapter.save
     }.to change(Chapter, :count).by(0)
   end

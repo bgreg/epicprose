@@ -4,6 +4,7 @@ feature "Story Management" do
 
   before do
     @story = create(:story)
+    login_as_seed_user
   end
 
   scenario "User creates a new story" do

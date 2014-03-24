@@ -18,6 +18,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include  Devise::TestHelpers, type: :controller
   config.mock_with :rspec
   config.include Rails.application.routes.url_helpers
   config.order = "random"
@@ -27,4 +28,5 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
 

@@ -15,7 +15,7 @@ describe Genre do
 
   it "should allow saving with a body" do 
     expect{ 
-      @genre.body = short_string
+      @genre.body = ValidString.short
       @genre.save 
     }.to change(Genre, :count).by(1)
   end

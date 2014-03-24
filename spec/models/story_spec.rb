@@ -23,7 +23,7 @@ describe Story do
     end
     it "should allow titles less than 120 characters and greater than 2" do 
       expect{
-        story = Story.new( title: short_string, picture_url: "https://www.rubygems.com")
+        story = Story.new( title: ValidString.short, picture_url: "https://www.rubygems.com")
         saved_story = story.save
       }.to change(Story, :count).by(1)
     end
@@ -89,7 +89,7 @@ describe Story do
 
     it "should not allow titles greater than 120 characters" do 
       expect{ 
-        story = Story.new( title: long_string, picture_url: "https://www.rubygems.com")
+        story = Story.new( title: ValidString.long, picture_url: "https://www.rubygems.com")
         saved_story = story.save
       }.to change(Story, :count).by(0)
     end

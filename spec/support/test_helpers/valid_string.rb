@@ -1,10 +1,11 @@
 class ValidString
-  def self.long_string
-   "Donec sed odio dui. Donec sed odio dui. "+
-   "Fusce dapibus, tellus ac cursus commodo, "+
-   "tortor mauris condimentum nibh, ut fermentum "+
-   "massa justo sit amet risus. Sed posuere consectetur"+
-   "est at lobortis. Maecenas faucibus mollis interdum." 
+
+  def self.url
+    Faker::Internet.url
+  end
+
+  def self.long
+    random_string(100)
   end
 
   def self.short
@@ -14,6 +15,11 @@ class ValidString
   def self.random_string(length)
    awesome_text = "PBR non literally, odio beard nisi put a bird on it vero nihil"+
       "Intelligentsia tousled. Etsy cillum tousled Williamsburg deep v"+
+      "Donec sed odio dui. Donec sed odio dui. "+
+      "Fusce dapibus, tellus ac cursus commodo, "+
+      "tortor mauris condimentum nibh, ut fermentum "+
+      "massa justo sit amet risus. Sed posuere consectetur"+
+      "est at lobortis. Maecenas faucibus mollis interdum." +
       "ea, Pitchfork tofu bitters you probably haven't heard of them"+
       "nihil asymmetrical slow-carb VHS. Leggings VHS asymmetrical "+
       "seitan direct trade, dolore beard freegan Pitchfork hoodie"+
@@ -28,7 +34,4 @@ class ValidString
     awesome_text.take(length).join(" ")
   end
 
-  def self.url
-    Faker::Internet.url
-  end
 end

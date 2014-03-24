@@ -15,7 +15,7 @@ describe WritingPrompt do
 
   it "should allow saving with a body" do 
     expect{ 
-      @writing_prompt.body = short_string
+      @writing_prompt.body = ValidString.short
       @writing_prompt.save 
     }.to change(WritingPrompt, :count).by(1)
   end
