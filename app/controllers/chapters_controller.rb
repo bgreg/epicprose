@@ -28,6 +28,11 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
+        story = Story.find(params[:story_id])
+        @chapter.user = current_user
+        story.chapters << @chapter
+        story.save
+
         format.html { redirect_to "/stories/#{params[:story_id]}/chapters/#{params[:id]}",
                       notice: 'Chapter was successfully created.' }
         format.json { render action: 'show',
