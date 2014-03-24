@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = get_user_stories
   end
 
   # GET /stories/1
@@ -25,9 +25,10 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
+    @story.picture_url = 'www.google.com' #TODO: replace with imgur api call later
     respond_to do |format|
       if @story.save
+        current_user.stories << @story
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
         format.json { render action: 'show', status: :created, location: @story }
       else
@@ -70,5 +71,14 @@ class StoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
       params.require(:story).permit(:title, :picture_url, :genre_id, :user_id)
+    end
+
+    def get_user_stories
+      if current_user.stories.empty?
+        stories = []
+      else
+        stories = current_user.stories
+      end
+      stories
     end
 end

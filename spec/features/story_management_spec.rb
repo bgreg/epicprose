@@ -10,7 +10,6 @@ feature "Story Management" do
   scenario "User creates a new story" do
     visit "/stories/new"
     fill_in "Title" , with: ValidString.short
-    fill_in "Picture url" , with: ValidString.url
     click_button "Create Story"
     expect(page).to have_text("Story was successfully created.")
   end
@@ -18,7 +17,6 @@ feature "Story Management" do
   scenario "User edits a story" do
     visit "/stories/#{@story.id}/edit"
     fill_in "Title" , with: ValidString.short
-    fill_in "Picture url" , with: ValidString.url
     click_button "Update Story"
     expect(page).to have_text("Story was successfully updated.")
   end
