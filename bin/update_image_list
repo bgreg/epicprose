@@ -1,0 +1,3 @@
+#!/bin/zsh
+echo "updated at: `date`" >> ../log/image_list.log
+repeat 10000 curl -sL http://imgur.com/gallery/random | grep e_sr | cut -d\" -f4 >> ../db/image_list 

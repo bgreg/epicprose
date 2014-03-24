@@ -10,17 +10,14 @@ class Story < ActiveRecord::Base
     too_short: "Must have at least 2 characters",
     too_long: "Must have at most 120 characters "
   }
-  validates_presence_of :picture_url
-  validates_format_of :picture_url,
-    with: /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/ ,
-    message: "Valid URL is required"
 
-  before_save :assign_genre
+  before_create :before_create
 
 private
 
-  def assign_genre
-    self.genre = Genre.limit(1).offset(rand(Genre.count)).first
+  def before_create
+    self.genre = Genre.random_genre
+    self.picture_url = Image.random_image
   end
 
   def chapter_limit_not_reached

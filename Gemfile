@@ -32,7 +32,6 @@ gem 'unicorn'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
-gem 'ruby-imgur'
 
 group :development, :test do
   gem 'rails-footnotes'
