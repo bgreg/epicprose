@@ -7,12 +7,12 @@
 
 <p>
   <strong>Story:</strong>
-  <%= @chapter.story_id %>
+  <%= @chapter.story %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @chapter.user_id %>
+  <%= @chapter.user %>
 </p>
 
 <%= link_to 'Edit', "/stories/#{params[:story_id]}/chapters/#{params[:id]}/edit" %> |
