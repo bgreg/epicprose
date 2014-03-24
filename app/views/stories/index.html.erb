@@ -1,37 +1,39 @@
-<h1>Listing stories</h1>
+<h1><%= current_user.email%>'s stories</h1>
+<div class="row">
+  <div class="large-12 large-centered columns ">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Picture url</th>
+          <th>Users</th>
+          <th>Genre</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Picture url</th>
-      <th>User</th>
-      <th>Genre</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @stories.each do |story| %>
+          <tr>
+            <td><%= story.title %></td>
+            <td><img src="<%= story.picture_url %>" alt="" /></td>
+            <td><%= story.users.length %></td>
+            <td><%= story.genre.body %></td>
+            <td><%= link_to 'Show', story , class: "button small" %></td>
+            <td><%= link_to 'Edit', edit_story_path(story) , class: "button small" %></td>
+            <td><%= link_to 'Destroy', story,
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: "button small" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <%= link_to 'New Story', new_story_path, class: "button" %>
+  </div>
+</div>
 
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td><%= story.picture_url %></td>
-        <td><%= story.users.length %></td>
-        <td><%= story.genre.body %></td>
-        <td><%= link_to 'Show', story , class: "button small" %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) , class: "button small" %></td>
-        <td><%= link_to 'Destroy', story,
-          method: :delete, 
-          data: { confirm: 'Are you sure?' },
-          class: "button small" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Story', new_story_path, class: "button" %>
