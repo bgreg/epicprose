@@ -4,23 +4,22 @@
   <thead>
     <tr>
       <th>Body</th>
-      <th>Story</th>
-      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @chapters.each do |chapter| %>
       <tr>
         <td><%= chapter.body %></td>
-        <td><%= chapter.story_id %></td>
-        <td><%= chapter.user_id %></td>
-        <td><%= link_to 'Show', story_chapter_path %></td>
-        <td><%= link_to 'Edit', edit_story_chapter_path(chapter) %></td>
-        <td><%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', story_chapter_path(id: params[:story_id]) %></td>
+        <td><%= link_to 'Edit', edit_story_chapter_path(id: params[:story_id]) %></td>
+        <td>
+          <%= link_to 'Destroy',
+          "/stories/#{params[:story_id]}/chapters/#{chapter.id}",
+          method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Chapter', new_story_chapter_path %>
+<%= link_to 'New Chapter', new_story_chapter_path , class: "button"%>

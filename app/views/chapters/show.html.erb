@@ -15,5 +15,5 @@
   <%= @chapter.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_story_chapter_path(@chapter) %> |
-<%= link_to 'Back', story_chapters_path %>
+<%= link_to 'Edit', "/stories/#{params[:story_id]}/chapters/#{params[:id]}/edit" %> |
+<%= link_to 'Back', "/stories/#{params[:story_id]}/chapters/#{params[:id]}" %>

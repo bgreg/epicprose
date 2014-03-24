@@ -1,11 +1,10 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
-  before_action :set_story
+  before_action :set_chapter, only: [ :show, :edit, :update, :destroy]
+  before_action :set_chapters, only: [:index]
 
   # GET /chapters
   # GET /chapters.json
   def index
-    @chapters = @stories.Chapter.all
   end
 
   # GET /chapters/1
@@ -29,8 +28,10 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @chapter }
+        format.html { redirect_to "/stories/#{params[:story_id]}/chapters/#{params[:id]}",
+                      notice: 'Chapter was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: [:story,@chapter]}
       else
         format.html { render action: 'new' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
@@ -43,6 +44,11 @@ class ChaptersController < ApplicationController
   def update
     respond_to do |format|
       if @chapter.update(chapter_params)
+        story = Story.find(params[:story_id])
+        @chapter.user = current_user
+        story.chapters << @chapter
+        story.save
+
         format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
@@ -57,23 +63,21 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter.destroy
     respond_to do |format|
-      format.html { redirect_to chapters_url }
+      format.html { redirect_to story_chapters_path(params[:story_id])}
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
+private
     def set_chapter
-      @chapter = Chapter.find(params[:id])
+      @chapter = Story.find(params[:story_id]).chapters.find(params[:id])
     end
 
-    def set_story
-      @story = Story.find(params[:story_id])
+    def set_chapters
+      @chapters = Story.find(params[:story_id]).chapters 
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:body, :story_id, :user_id)
+      params.require(:chapter).permit(:body)
     end
 end
