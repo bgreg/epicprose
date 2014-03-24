@@ -5,22 +5,22 @@
       <thead>
         <tr>
           <th>Title</th>
+          <th>Genre</th>
           <th>Picture url</th>
           <th>Users</th>
-          <th>Genre</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>show</th>
+          <th>edit</th>
+          <th>delete</th>
         </tr>
       </thead>
 
       <tbody>
         <% @stories.each do |story| %>
           <tr>
-            <td><%= story.title %></td>
+            <td><h3><%= story.title %></h3></td>
+            <td><h3><%= story.genre.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="" /></td>
             <td><%= story.users.length %></td>
-            <td><%= story.genre.body %></td>
             <td><%= link_to 'Show', story , class: "button small" %></td>
             <td><%= link_to 'Edit', edit_story_path(story) , class: "button small" %></td>
             <td><%= link_to 'Destroy', story,

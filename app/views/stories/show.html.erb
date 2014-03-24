@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  <strong>Picture url:</strong>
+  <strong>Randomly assigned image</strong>
   <td><img src="<%= @story.picture_url %>" alt="" /></td>
 </p>
 <p>
-  <strong>Genre:</strong>
-  <%= @story.genre.body %>
+  <strong>Randomly assigned genre:</strong>
+  <h3><%= @story.genre.body %></h3>
 </p>
 
 <%= link_to 'Edit', edit_story_path(@story), class: "button" %> 
