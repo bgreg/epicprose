@@ -9,16 +9,10 @@
   <strong>Picture url:</strong>
   <%= @story.picture_url %>
 </p>
-
-<p>
-  <strong>User:</strong>
-  <%= @story.user_id %>
-</p>
-
 <p>
   <strong>Genre:</strong>
-  <%= @story.genre_id %>
+  <%= @story.genre.body %>
 </p>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+<%= link_to 'Edit', edit_story_path(@story), class: "button" %> 
+<%= link_to 'Back', stories_path , class: "button secondary"%>
