@@ -2,5 +2,17 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @story %> |
-<%= link_to 'Back', stories_path %>
+<div class="row">
+  <div class="large-12 columns">
+      <img src="<%= @story.picture_url %>" alt="Random picture"/>
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="large-12 columns">
+    <%= link_to 'Show', @story, class: "button small"%> 
+    <%= link_to 'Back', stories_path, class: "button small" %>
+  </div>
+</div>

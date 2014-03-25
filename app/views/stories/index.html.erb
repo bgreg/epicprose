@@ -8,6 +8,7 @@
           <th>Genre</th>
           <th>Picture url</th>
           <th>Users</th>
+          <th>chapters</th>
           <th>show</th>
           <th>edit</th>
           <th>delete</th>
@@ -19,14 +20,21 @@
           <tr>
             <td><h3><%= story.title %></h3></td>
             <td><h3><%= story.genre.body %></h3></td>
-            <td><img src="<%= story.picture_url %>" alt="" /></td>
-            <td><%= story.users.length %></td>
-            <td><%= link_to 'Show', story , class: "button small" %></td>
-            <td><%= link_to 'Edit', edit_story_path(story) , class: "button small" %></td>
+            <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
+            <td><p class="lead"><%= story.chapters.length %></p></td>
+            <td><p class="lead"><%= story.users.length %></p></td>
+            <td><%= link_to 'Show',
+                    story,
+                    class: "button small" %>
+            </td>
+            <td><%= link_to 'Edit',
+                    edit_story_path(story),
+                    class: "button secondary small" %>
+            </td>
             <td><%= link_to 'Destroy', story,
-              method: :delete, 
-              data: { confirm: 'Are you sure?' },
-              class: "button small alert" %>
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: "button small alert" %>
             </td>
           </tr>
         <% end %>

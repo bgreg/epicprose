@@ -7,13 +7,23 @@
 
 <p>
   <strong>Story:</strong>
-  <%= @chapter.story %>
+  <%= @chapter.story.title %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @chapter.user %>
+  <strong>Users:</strong>
+  <% @chapter.story.users.each do |u| %>
+    <%= u.email %>
+  <% end %>
+
 </p>
 
-<%= link_to 'Edit', "/stories/#{params[:story_id]}/chapters/#{params[:id]}/edit" %> |
-<%= link_to 'Back', "/stories/#{params[:story_id]}/chapters/#{params[:id]}" %>
+              
+<%= link_to 'Edit',
+    edit_story_chapter_path(params[:story_id], params[:id] ),
+    class: "button small secondary"
+  %> 
+<%= link_to 'Back',
+    story_chapters_path(params[:story_id]), 
+    class:"button small" 
+  %>

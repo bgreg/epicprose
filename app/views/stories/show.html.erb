@@ -14,5 +14,6 @@
   <h3><%= @story.genre.body %></h3>
 </p>
 
+<%= link_to 'chapters', story_chapters_path(@story.id), class: "button" %> 
 <%= link_to 'Edit', edit_story_path(@story), class: "button" %> 
 <%= link_to 'Back', stories_path , class: "button secondary"%>

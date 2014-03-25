@@ -1,8 +1,8 @@
 <h1>Listing chapters</h1>
-
 <table>
   <thead>
     <tr>
+      <th>user</th>
       <th>Body</th>
       <th></th>
       <th></th>
@@ -12,13 +12,23 @@
   <tbody>
     <% @chapters.each do |chapter| %>
       <tr>
+        <td><%= chapter.user.email%></td>
         <td><%= chapter.body %></td>
-        <td><%= link_to 'Show', story_chapter_path(id: params[:story_id]) %></td>
-        <td><%= link_to 'Edit', edit_story_chapter_path(id: params[:story_id]) %></td>
+        <td><%= link_to 'Show',
+                story_chapter_path(chapter.story_id, chapter.id),
+                class: "button small" %>
+        </td>
+        <td>
+          <%= link_to 'Edit',
+              edit_story_chapter_path(chapter.story_id, chapter.id),
+              class: "button small secondary" %>
+        </td>
         <td>
           <%= link_to 'Destroy',
-          "/stories/#{params[:story_id]}/chapters/#{chapter.id}",
-          method: :delete, data: { confirm: 'Are you sure?' } %>
+              "/stories/#{chapter.story_id}/chapters/#{chapter.id}",
+              method: :delete,
+              class: "button small alert",
+              data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
