@@ -23,14 +23,6 @@ describe StoriesController do
     @user.destroy
   end
 
-  describe "GET index" do
-    xit "assigns all stories as @stories" do
-      story = Story.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:stories).should eq([story])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested story as @story" do
       story = Story.create! valid_attributes
