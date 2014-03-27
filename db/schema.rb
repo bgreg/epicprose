@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20140324034828) do
   end
 
   create_table "genres", force: true do |t|
-    t.integer  "story_id"
     t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,16 +36,22 @@ ActiveRecord::Schema.define(version: 20140324034828) do
   create_table "stories", force: true do |t|
     t.string   "title"
     t.string   "picture_url"
-    t.integer  "user_id"
     t.integer  "genre_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "stories_users", id: false, force: true do |t|
-    t.integer "story_id"
-    t.integer "user_id"
+  create_table "story_roles", force: true do |t|
+    t.integer  "story_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "story_roles", ["role"], name: "index_story_roles_on_role"
+  add_index "story_roles", ["story_id"], name: "index_story_roles_on_story_id"
+  add_index "story_roles", ["user_id"], name: "index_story_roles_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
