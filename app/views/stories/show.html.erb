@@ -13,6 +13,42 @@
   <strong>Randomly assigned genre:</strong>
   <h3><%= @story.genre.body %></h3>
 </p>
+<h1>Listing chapters</h1>
+<table>
+  <thead>
+    <tr>
+      <th>user</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @story.chapters.each do |chapter| %>
+      <tr>
+        <td><%= chapter.user.email%></td>
+        <td><%= chapter.body %></td>
+        <td><%= link_to 'Show',
+                story_chapter_path(chapter.story_id, chapter.id),
+                class: "button small" %>
+        </td>
+        <td>
+          <%= link_to 'Edit',
+              edit_story_chapter_path(chapter.story_id, chapter.id),
+              class: "button small secondary" %>
+        </td>
+        <td>
+          <%= link_to 'Destroy',
+              "/stories/#{chapter.story_id}/chapters/#{chapter.id}",
+              method: :delete,
+              class: "button small alert",
+              data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'chapters', story_chapters_path(@story.id), class: "button" %> 
 <%= link_to 'Edit', edit_story_path(@story), class: "button" %> 

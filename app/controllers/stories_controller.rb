@@ -25,7 +25,6 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-    @story.picture_url = 'www.google.com' #TODO: replace with imgur api call later
     respond_to do |format|
       if @story.save
         current_user.stories << @story
@@ -68,9 +67,8 @@ class StoriesController < ApplicationController
       @story = Story.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :picture_url, :genre_id, :user_id)
+      params.require(:story).permit(:title, :picture_url)
     end
 
     def get_user_stories

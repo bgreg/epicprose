@@ -12,7 +12,7 @@ u = User.new( email: "seed.mcseed_1@gmail.com", password: '12341234')
 u.save!(validate: false)
 
 File.open('db/genres').each do |line|
-  Genre.create(body: line.squish)
+  Category.create(body: line.squish)
 end
 
 File.open('db/image_list').each do |line|
