@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140324034828) do
 
   create_table "categories", force: true do |t|
     t.string   "body"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
