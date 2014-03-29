@@ -18,6 +18,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     co_author = get_co_author
+    redirect_to new_story_path, alert: "valid co-author email required" and return unless co_author 
 
     respond_to do |format|
       if @story.save && co_author
