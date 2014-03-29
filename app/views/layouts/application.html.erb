@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Epic Prose" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -32,24 +32,31 @@
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
   
-  <% if alert or notice %>
-  <script>
-    $(document).ready(function() {
-      setTimeout(function(){
-        $('.alert-box').fadeOut(500);
-      },3000);
-    });
-  </script>
-  <%end%>
+  <%# <% if alert or notice %>
+  <%# <script>
+  <%#   $(document).ready(function() {
+  <%#     setTimeout(function(){
+  <%#       $('#goodbye').fadeOut(500);
+  <%#     },3000);
+  <%#   });
+  <%# </script>
+  <%# <%end%>
+
 
   <% if notice %>
-    <div data-alert class="alert-box success">
+    <script type="text/javascript" charset="utf-8">
+      window.setTimeout(function() { $(".alert-box").fadeOut(500); }, 3000);
+    </script>
+    <div data-options="animation:fadeout;" data-alert class="alert-box success">
       <%= notice %>
       <a href="" class="close">×</a>
     </div>
   <% end %>
   <% if alert%>
-    <div data-alert class="alert-box alert">
+    <script type="text/javascript" charset="utf-8">
+      window.setTimeout(function() { $(".alert-box").fadeOut(500); }, 3000);
+    </script>
+    <div data-options="animation:fadeout;" data-alert class="alert-box alert">
       <%= alert%><a href="" class="close">×</a>
     </div>
   <% end %>
