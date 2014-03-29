@@ -1,6 +1,6 @@
 FactoryGirl.define do
   sequence :email do |n|
-    "email#{n}@factory.com"
+    "#{Guid.new.to_s}-email#{n}@gmail.com"
   end
 
   factory :user do
