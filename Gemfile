@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
 
-gem 'sqlite3'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -34,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'zurb-foundation'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rails-footnotes'
   gem 'rspec-rails'
   gem 'debugger'
@@ -46,5 +45,5 @@ group :development, :test do
 end
 
 group :production do 
-  gem 'pg'
+  gem 'mysql2'
 end
