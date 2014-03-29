@@ -7,7 +7,7 @@ feature "Story Management" do
     login_as_seed_user
   end
 
-  xit "should have a valid factory" do 
+  it "should have a valid factory" do 
     @story.should be_an_instance_of(Story)
     @story.category.body.should be_an_instance_of(String)
   end
