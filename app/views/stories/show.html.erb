@@ -13,7 +13,8 @@
   <strong>Randomly assigned category:</strong>
   <h3><%= @story.category.body %></h3>
 </p>
-<h1>Listing chapters</h1>
+<p><strong>Co Author:</strong><%= @co_author%></p>
+<h1>Chapters</h1>
 <table>
   <thead>
     <tr>
@@ -50,6 +51,6 @@
   </tbody>
 </table>
 
-<%= link_to 'chapters', story_chapters_path(@story.id), class: "button" %> 
-<%= link_to 'Edit', edit_story_path(@story), class: "button" %> 
-<%= link_to 'Back', stories_path , class: "button secondary"%>
+<%= link_to 'New Chapters', new_story_chapter_path(@story.id), class: "button" %> 
+<%= link_to 'Edit Story', edit_story_path(@story), class: "button" %> 
+<%= link_to 'Back to Story List', stories_path , class: "button secondary"%>

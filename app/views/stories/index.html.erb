@@ -5,13 +5,13 @@
       <thead>
         <tr>
           <th>Title</th>
-          <th>Genre</th>
-          <th>Picture url</th>
-          <th>Users</th>
+          <th>Category</th>
+          <th>Image</th>
+          <th>co-author</th>
           <th>chapters</th>
-          <th>show</th>
-          <th>edit</th>
-          <th>delete</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -21,6 +21,7 @@
             <td><h3><%= story.title %></h3></td>
             <td><h3><%= story.category.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
+            <td><p class="lead"><%= get_co_author(story) %></p></td>
             <td><p class="lead"><%= story.chapters.length %></p></td>
             <td><p class="lead"><%= story.users.length %></p></td>
             <td><%= link_to 'Show',

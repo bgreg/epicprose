@@ -9,9 +9,7 @@ describe Story do
 
     it "should allow 6 chapters to be added" do
       story = Story.new(title: "Demo Story", picture_url: "https://www.rubygems.com")
-      chapters = []
-      6.times{ chapters << Chapter.create(body: "test") }
-      story.chapters = chapters
+      6.times{ story.chapters << Chapter.create(body: "test") }
       story.save
       story.chapters.length.should be(6)
     end
@@ -23,7 +21,7 @@ describe Story do
       }.to change(Story, :count).by(1)
     end
 
-    it "should allow titles less than 120 characters and greater than 2" do 
+    it "should allow titles less than 120 characters and greater than 2" do
       expect{
         story = Story.new( title: ValidString.short, picture_url: "https://www.rubygems.com")
         story.save
@@ -34,24 +32,23 @@ describe Story do
   describe "With invalid params" do
     it "should not save a story with more than 6 chapters" do
       story = Story.new(title: "Demo Story", picture_url: "https://www.rubygems.com")
-      chapters = []
-      6.times{ chapters << Chapter.create(body: "test") }
-      story.chapters = chapters
-      story.chapters << Chapter.create(body: "test")
+      6.times{ story.chapters << Chapter.create(body: "test") }
+      story.save
 
+      story.chapters << Chapter.create(body: "test")
       saved_story = story.save
       saved_story.should be_false
     end
 
     it "should display an appropriate error message on 7th chapter save attempt" do
       story = Story.new(title: "Demo Story", picture_url: "https://www.rubygems.com")
-      chapters = []
-      6.times{ chapters << Chapter.create(body: "test") }
-      story.chapters = chapters
-      story.chapters << Chapter.create(body: "test")
-
+      6.times{ story.chapters << Chapter.create(body: "test") }
       story.save
-      expect(story.errors.messages[:chapter]).to include("Cannot have more than 6 chapters")
+
+      story.chapters << Chapter.create(body: "test")
+      story.save
+
+      expect(story.errors.messages[:story]).to include("Cannot have more than 6 chapters")
     end
 
     it "should not save without valid title" do

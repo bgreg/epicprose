@@ -1,33 +1,29 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
-  # GET /stories
-  # GET /stories.json
   def index
     @stories = get_user_stories
   end
 
-  # GET /stories/1
-  # GET /stories/1.json
   def show
   end
 
-  # GET /stories/new
   def new
     @story = Story.new
   end
 
-  # GET /stories/1/edit
   def edit
   end
 
-  # POST /stories
-  # POST /stories.json
   def create
     @story = Story.new(story_params)
+    co_author = get_co_author
+
     respond_to do |format|
-      if @story.save
+      if @story.save && co_author
         current_user.stories << @story
+        co_author.stories << @story
+        assign_story_roles
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
         format.json { render action: 'show', status: :created, location: @story }
       else
@@ -37,8 +33,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stories/1
-  # PATCH/PUT /stories/1.json
   def update
     respond_to do |format|
       if @story.update(story_params)
@@ -51,8 +45,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # DELETE /stories/1
-  # DELETE /stories/1.json
   def destroy
     @story.destroy
     respond_to do |format|
@@ -62,13 +54,34 @@ class StoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+      set_roles
+    end
+
+    def set_roles
+      @author = StoryRole.where(story_id: @story.id, role: :author).first.user.email
+      @co_author = StoryRole.where(story_id: @story.id, role: :co_author).first.user.email
+    end
+
+    def get_co_author
+      User.where(email: params[:co_author]).first
     end
 
     def story_params
       params.require(:story).permit(:title, :picture_url)
+    end
+
+    def assign_story_roles
+      s = StoryRole.where( story_id: @story.id,
+        user_id:  get_co_author.id).first
+      s.role = :co_author
+      s.save
+
+      s = StoryRole.where( story_id: @story.id,
+        user_id:  current_user.id).first 
+      s.role = :author
+      s.save
     end
 
     def get_user_stories
