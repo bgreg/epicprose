@@ -41,6 +41,8 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'faker'
+  gem 'launchy'
+  gem 'guid'
 end
 
 group :production do 
