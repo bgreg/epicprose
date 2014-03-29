@@ -8,8 +8,10 @@
 #
 #   to relaod image_list: curl -sL http://imgur.com/gallery/random | grep e_sr | cut -d\" -f4'
 #
-u = User.new( email: "seed.mcseed_1@gmail.com", password: '12341234')
-u.save!(validate: false)
+unless User.where(email: "seed.mcseed_1@gmail.com").first
+  u = User.new( email: "seed.mcseed_1@gmail.com", password: '12341234')
+  u.save!(validate: false)
+end
 
 File.open('db/genres').each do |line|
   Category.create(body: line.squish)
