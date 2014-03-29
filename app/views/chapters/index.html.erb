@@ -13,7 +13,7 @@
     <% @chapters.each do |chapter| %>
       <tr>
         <td><%= chapter.user.email%></td>
-        <td><%= chapter.body %></td>
+        <td><%# chapter.body %></td>
         <td><%= link_to 'Show',
                 story_chapter_path(chapter.story_id, chapter.id),
                 class: "button small" %>

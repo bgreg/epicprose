@@ -2,38 +2,29 @@ class ChaptersController < ApplicationController
   before_action :set_chapter, only: [ :show, :edit, :update, :destroy]
   before_action :set_chapters, only: [:index]
 
-  # GET /chapters
-  # GET /chapters.json
   def index
   end
 
-  # GET /chapters/1
-  # GET /chapters/1.json
   def show
   end
 
-  # GET /chapters/new
   def new
     @chapter = Chapter.new
   end
 
-  # GET /chapters/1/edit
   def edit
   end
 
-  # POST /chapters
-  # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
+    story = Story.find( params[:story_id] )
+    @chapter.user = current_user
+    story.chapters << @chapter
 
     respond_to do |format|
-      if @chapter.save
-        story = Story.find(params[:story_id])
-        @chapter.user = current_user
-        story.chapters << @chapter
-        story.save
+      if @chapter.save && story.save
 
-        format.html { redirect_to "/stories/#{params[:story_id]}/chapters/#{params[:id]}",
+        format.html { redirect_to story_path(story.id),
                       notice: 'Chapter was successfully created.' }
         format.json { render action: 'show',
                       status: :created, location: [:story,@chapter]}
@@ -44,16 +35,9 @@ class ChaptersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /chapters/1
-  # PATCH/PUT /chapters/1.json
   def update
     respond_to do |format|
       if @chapter.update(chapter_params)
-        story = Story.find(params[:story_id])
-        @chapter.user = current_user
-        story.chapters << @chapter
-        story.save
-
         format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
@@ -63,8 +47,6 @@ class ChaptersController < ApplicationController
     end
   end
 
-  # DELETE /chapters/1
-  # DELETE /chapters/1.json
   def destroy
     @chapter.destroy
     respond_to do |format|
