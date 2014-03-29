@@ -16,7 +16,7 @@ class Story < ActiveRecord::Base
 private
 
   def before_create
-    #self.category = Category.random_genre
+    self.category = Category.random_category
     self.picture_url = Image.random_image
   end
 

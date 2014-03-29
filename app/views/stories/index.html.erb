@@ -19,7 +19,7 @@
         <% @stories.each do |story| %>
           <tr>
             <td><h3><%= story.title %></h3></td>
-            <td><h3><%= story.genre.body %></h3></td>
+            <td><h3><%= story.category.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
             <td><p class="lead"><%= story.chapters.length %></p></td>
             <td><p class="lead"><%= story.users.length %></p></td>

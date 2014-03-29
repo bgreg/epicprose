@@ -3,7 +3,6 @@ class CreateStories < ActiveRecord::Migration
     create_table :stories do |t|
       t.string :title
       t.string :picture_url
-      t.integer :category_id
 
       t.timestamps
     end
