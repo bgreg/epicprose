@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   has_many :chapters, dependent: :destroy
   has_many :users, through: :story_roles
+  has_many :story_roles
   has_one :category
 
   validate :chapter_limit_not_reached, on: :update
