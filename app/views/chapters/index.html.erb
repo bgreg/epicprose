@@ -6,22 +6,16 @@
       <th>Body</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @chapters.each do |chapter| %>
       <tr>
         <td><%= chapter.user.email%></td>
-        <td><%# chapter.body %></td>
+        <td><%= chapter.body %></td>
         <td><%= link_to 'Show',
                 story_chapter_path(chapter.story_id, chapter.id),
                 class: "button small" %>
-        </td>
-        <td>
-          <%= link_to 'Edit',
-              edit_story_chapter_path(chapter.story_id, chapter.id),
-              class: "button small secondary" %>
         </td>
         <td>
           <%= link_to 'Destroy',

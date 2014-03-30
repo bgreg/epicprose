@@ -15,15 +15,6 @@
   <% @chapter.story.users.each do |u| %>
     <%= u.email %>
   <% end %>
-
 </p>
 
-
-<%= link_to 'Edit',
-    edit_story_chapter_path(params[:story_id], params[:id] ),
-    class: "button small secondary"
-  %> 
-<%= link_to 'Back',
-    story_chapters_path(params[:story_id]), 
-    class:"button small" 
-  %>
+<%= link_to 'Back', story_chapters_path(params[:story_id]), class:"button small" %>

@@ -23,7 +23,6 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save && story.save
-
         format.html { redirect_to story_path(story.id),
                       notice: 'Chapter was successfully created.' }
         format.json { render action: 'show',
@@ -50,7 +49,7 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter.destroy
     respond_to do |format|
-      format.html { redirect_to story_chapters_path(params[:story_id])}
+      format.html { redirect_to story_path(params[:story_id])}
       format.json { head :no_content }
     end
   end
