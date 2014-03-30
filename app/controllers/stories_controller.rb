@@ -16,9 +16,9 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.new(story_params)
     co_author = get_co_author
     redirect_to new_story_path, alert: "valid co-author email required" and return unless co_author 
+    @story = Story.new(story_params)
 
     respond_to do |format|
       if @story.save && co_author
@@ -57,12 +57,6 @@ class StoriesController < ApplicationController
   private
     def set_story
       @story = Story.find(params[:id])
-      set_roles
-    end
-
-    def set_roles
-      @author = StoryRole.where(story_id: @story.id, role: :author).first.user.email
-      @co_author = StoryRole.where(story_id: @story.id, role: :co_author).first.user.email
     end
 
     def get_co_author

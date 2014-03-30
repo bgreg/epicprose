@@ -24,6 +24,6 @@ private
   end
 
   def chapter_limit_not_reached
-    errors.add(:story, "Cannot have more than 6 chapters") if chapters.size > 5
+    errors.add(:story, "Cannot have more than 6 chapters") if chapters.size > 6
   end
 end

@@ -9,17 +9,18 @@
   <td><img src="<%= @story.picture_url %>" alt="" /></td>
 </p>
 <p>
-  <h3><strong>Randomly assigned category:</strong><%= @story.category.body %></h3>
+  <h3>Category: <%= @story.category.body %></h3>
   
 </p>
-<p><strong>Co Author:</strong><%= @co_author%></p>
-<h1>Chapters</h1>
+<p><strong>Co Author:</strong><%= get_co_author(@story)%></p>
+<p><strong>Author:</strong><%= get_author(@story)%></p>
+<hr />
+<h3>Chapters</h3>
 <table>
   <thead>
     <tr>
       <th>user</th>
       <th>Body</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -34,11 +35,6 @@
                 class: "button small" %>
         </td>
         <td>
-          <%= link_to 'Edit',
-              edit_story_chapter_path(chapter.story_id, chapter.id),
-              class: "button small secondary" %>
-        </td>
-        <td>
           <%= link_to 'Destroy',
               "/stories/#{chapter.story_id}/chapters/#{chapter.id}",
               method: :delete,
@@ -49,7 +45,9 @@
     <% end %>
   </tbody>
 </table>
+<% if @story.chapters.length < 6 %> 
+  <%= link_to 'New Chapter', new_story_chapter_path(@story.id), class: "button" %> 
+<% end %>
 
-<%= link_to 'New Chapters', new_story_chapter_path(@story.id), class: "button" %> 
 <%= link_to 'Edit Story', edit_story_path(@story), class: "button" %> 
 <%= link_to 'Back to Story List', stories_path , class: "button secondary"%>

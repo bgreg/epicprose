@@ -1,4 +1,4 @@
-<h1><%= current_user.email%>'s stories</h1>
+<h1>Your Stories</h1>
 <div class="row">
   <div class="large-12 large-centered columns ">
     <table>
@@ -7,9 +7,9 @@
           <th>Title</th>
           <th>Category</th>
           <th>Image</th>
+          <th>author</th>
           <th>co-author</th>
           <th>chapters</th>
-          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -21,16 +21,20 @@
             <td><h3><%= story.title %></h3></td>
             <td><h3><%= story.category.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
+            <td><p class="lead"><%= get_author(story) %></p></td>
             <td><p class="lead"><%= get_co_author(story) %></p></td>
-            <td><p class="lead"><%= story.chapters.length %></p></td>
-            <td><p class="lead"><%= story.users.length %></p></td>
+            <td>
+               <% if story.chapters.length == 6%> 
+                  <p class="label success">completed</p>
+               <%elsif story.chapters.length == 0 %>
+                  <p class="label alert"><%= story.chapters.length %></p>
+               <% else %>
+                  <p class="lead"><%= story.chapters.length %></p>
+               <% end %>
+            </td>
             <td><%= link_to 'Show',
                     story,
                     class: "button small" %>
-            </td>
-            <td><%= link_to 'Edit',
-                    edit_story_path(story),
-                    class: "button secondary small" %>
             </td>
             <td><%= link_to 'Destroy', story,
                     method: :delete,
