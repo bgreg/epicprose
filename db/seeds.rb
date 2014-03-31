@@ -7,6 +7,7 @@
 #    Mayor.create(name: 'Emanuel', city: cities.first)
 #
 #   to relaod image_list: curl -sL http://imgur.com/gallery/random | grep e_sr | cut -d\" -f4'
+#   to grab from a subreddit: curl -sL https://imgur.com/r/pics | grep '<img alt="" src="' | cut -d\" -f4 | sed 's/\/\//http:\/\//'
 #
 unless User.where(email: "seed.mcseed_1@gmail.com").first
   u = User.new( email: "seed.mcseed_1@gmail.com", password: '12341234')
