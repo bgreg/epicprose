@@ -69,7 +69,7 @@ class ChaptersController < ApplicationController
   end
 
   def get_other_user(user,story)
-    role = StoryRole.where( "story_id == :story_id AND user_id != :user_id",
+    role = StoryRole.where( "story_id = :story_id AND user_id != :user_id",
              { story_id: story.id, user_id: user.id} )
     role.first.user.id.to_i
   end

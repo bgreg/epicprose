@@ -74,7 +74,7 @@ class StoriesController < ApplicationController
       s.save
 
       s = StoryRole.where( story_id: @story.id,
-        user_id:  current_user.id).first 
+        user_id:  current_user.id).first
       s.role = :author
       s.save
     end
