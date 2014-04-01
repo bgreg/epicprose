@@ -7,4 +7,5 @@ class Chapter < ActiveRecord::Base
     minimum: 2
   }
   validates_associated :story, message: "Only 6 chapters allowed"
+
 end

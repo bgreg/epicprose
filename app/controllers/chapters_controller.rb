@@ -20,6 +20,7 @@ class ChaptersController < ApplicationController
     story = Story.find( params[:story_id] )
     @chapter.user = current_user
     story.chapters << @chapter
+    story.turn = get_other_user(current_user,story)
 
     respond_to do |format|
       if @chapter.save && story.save
@@ -54,16 +55,22 @@ class ChaptersController < ApplicationController
     end
   end
 
-private
-    def set_chapter
-      @chapter = Story.find(params[:story_id]).chapters.find(params[:id])
-    end
+  private
+  def set_chapter
+    @chapter = Story.find(params[:story_id]).chapters.find(params[:id])
+  end
 
-    def set_chapters
-      @chapters = Story.find(params[:story_id]).chapters 
-    end
+  def set_chapters
+    @chapters = Story.find(params[:story_id]).chapters 
+  end
 
-    def chapter_params
-      params.require(:chapter).permit(:body)
-    end
+  def chapter_params
+    params.require(:chapter).permit(:body)
+  end
+
+  def get_other_user(user,story)
+    role = StoryRole.where( "story_id == :story_id AND user_id != :user_id",
+             { story_id: story.id, user_id: user.id} )
+    role.first.user.id.to_i
+  end
 end

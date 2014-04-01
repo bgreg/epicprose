@@ -1,6 +1,4 @@
-
 <p>
-  
   <h2>Title: <%= @story.title %></h2>
 </p>
 
@@ -14,6 +12,7 @@
 </p>
 <p><strong>Co Author:</strong><%= get_co_author(@story)%></p>
 <p><strong>Author:</strong><%= get_author(@story)%></p>
+<p><strong>Turn:</strong><%= get_user( get_turn( @story.turn ) ) %></p>
 <hr />
 <h3>Chapters</h3>
 <table>
@@ -45,9 +44,8 @@
     <% end %>
   </tbody>
 </table>
-<% if @story.chapters.length < 6 %> 
+<% if @story.chapters.length < 6 && get_turn(@story.turn).to_i == current_user.id %>
   <%= link_to 'New Chapter', new_story_chapter_path(@story.id), class: "button" %> 
 <% end %>
 
-<%= link_to 'Edit Story', edit_story_path(@story), class: "button" %> 
 <%= link_to 'Back to Story List', stories_path , class: "button secondary"%>

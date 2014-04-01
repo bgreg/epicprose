@@ -10,6 +10,7 @@
           <th>author</th>
           <th>co-author</th>
           <th>chapters</th>
+          <th>turn</th>
           <th></th>
           <th></th>
         </tr>
@@ -32,6 +33,7 @@
                   <p class="lead"><%= story.chapters.length %></p>
                <% end %>
             </td>
+            <td> <%= get_user(story.turn) %></td>
             <td><%= link_to 'Show',
                     story,
                     class: "button small" %>
