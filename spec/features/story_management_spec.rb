@@ -2,10 +2,10 @@ require "spec_helper"
 
 feature "Story Management" do
 
-  let(:authorized_user){ RequestHelpers::Login.create_logged_in_user }
+  let( :authorized_user ){ RequestHelpers::Login.create_logged_in_user }
 
   scenario  "has a valid factory" do
-    authorized_user.should be_an_instance_of(User)
+    authorized_user.should be_an_instance_of( User )
   end
 
   scenario "Can visit root", js:true do
