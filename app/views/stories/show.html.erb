@@ -8,11 +8,10 @@
 </p>
 <p>
   <h3>Category: <%= @story.category.body %></h3>
-  
 </p>
-<p><strong>Co Author:</strong><%= get_co_author(@story)%></p>
-<p><strong>Author:</strong><%= get_author(@story)%></p>
-<p><strong>Turn:</strong><%= get_user( get_turn( @story.turn ) ) %></p>
+<p><strong>Co Author:</strong><%= get_co_author(@story.id)%></p>
+<p><strong>Author:</strong>   <%= get_author(@story.id)%></p>
+<p><strong>Turn:</strong>     <%= get_user( get_turn( @story.turn ) ) %></p>
 <hr />
 <h3>Chapters</h3>
 <table>
@@ -47,5 +46,4 @@
 <% if @story.chapters.length < 6 && get_turn(@story.turn).to_i == current_user.id %>
   <%= link_to 'New Chapter', new_story_chapter_path(@story.id), class: "button" %> 
 <% end %>
-
 <%= link_to 'Back to Story List', stories_path , class: "button secondary"%>

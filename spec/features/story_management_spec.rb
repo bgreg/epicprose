@@ -1,51 +1,43 @@
 require "spec_helper"
-include Warden::Test::Helpers
-Warden.test_mode!
 
 feature "Story Management" do
 
-  before do
-    @user = create(:user)
-    login_as(@user,:scope => :user)
-    @story = create(:story)
+  let(:authorized_user){ RequestHelpers::Login.create_logged_in_user }
+
+  scenario  "has a valid factory" do
+    authorized_user.should be_an_instance_of(User)
   end
 
-  after do
-    @user.destroy
-    @story.destroy
+  scenario "Can visit root", js:true do
+     visit root_path( authorized_user )
+     page.should have_content( "Your Stories" )
   end
 
-  it "should have a valid factory" do 
-    @story.should be_an_instance_of(Story)
-    @story.category.body.should be_an_instance_of(String)
+  scenario "should login without being retarded", js: true do
+     visit root_path( authorized_user )
+     page.should have_content( "Your Stories" )
   end
 
-  scenario "User creates a new story", js: true  do
-    visit "/stories/new"
+  scenario "User creates a new story", js: true do
+    visit new_story_path( authorized_user )
+    fill_in "story_title", with: ValidString.short
 
-    fill_in "Title" , with: ValidString.short
-    fill_in "Co author" , with: "seed.mcseed_1@gmail.com"
+    fill_in "co_author", with: "seed.mcseed_1@gmail.com"
     click_button "Create Story"
-    expect(page).to have_text("Story was successfully created.")
-  end
-
-  scenario "User edits a story", js: true  do
-    @story = Story.create(title:"test", picture_url:"www.google.com")
-    @story.users << @user
-
-    visit "/stories/#{@story.id}/edit"
-    save_and_open_page
-    fill_in "Title", with: ValidString.short
-    click_button "Update Story"
-    expect(page).to have_text("Story was successfully updated.")
-    @story.destroy
+    expect( page ).to have_text( "Story was successfully created." )
   end
 
   scenario "User can delete a story", js: true do
-    visit "/stories"
+    visit new_story_path( authorized_user )
+    fill_in "story_title", with: ValidString.short
+
+    fill_in "co_author", with: "seed.mcseed_1@gmail.com"
+    click_button "Create Story"
+
+    visit stories_path( authorized_user )
     expect {
-      page.evaluate_script('window.confirm = function() {return true;}') #disable conf
-      first(:link, "Destroy").click
-    }.to change(Story, :count).by(-1)
+      page.evaluate_script( 'window.confirm = function() {return true;}' )
+      click_link(  "Destroy"  ).first
+    }.to change( Story, :count ).by( -1 )
   end
 end

@@ -22,8 +22,8 @@
             <td><h3><%= story.title %></h3></td>
             <td><h3><%= story.category.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
-            <td><p class="lead"><%= get_author(story) %></p></td>
-            <td><p class="lead"><%= get_co_author(story) %></p></td>
+            <td><p class="lead"><%= get_author( story.id ) %></p></td>
+            <td><p class="lead"><%= get_co_author( story.id ) %></p></td>
             <td>
                <% if story.chapters.length == 6%> 
                   <p class="label success">completed</p>
