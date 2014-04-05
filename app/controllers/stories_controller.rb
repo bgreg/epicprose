@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @friends = get_friends
   end
 
   def edit
@@ -18,12 +19,13 @@ class StoriesController < ApplicationController
   def create
     co_author = get_co_author
     redirect_to new_story_path, alert: "valid co-author email required" and return unless co_author 
-    @story = Story.new(story_params)
+    @story = Story.new( story_params )
+    @story.turn = current_user.id
 
     respond_to do |format|
       if @story.save && co_author
-        current_user.stories << @story
-        co_author.stories << @story
+        current_user.stories  << @story
+        co_author.stories     << @story
         assign_story_roles
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
         format.json { render action: 'show', status: :created, location: @story }
@@ -36,7 +38,7 @@ class StoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @story.update(story_params)
+      if @story.update( story_params )
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
         format.json { head :no_content }
       else
@@ -56,11 +58,11 @@ class StoriesController < ApplicationController
 
   private
     def set_story
-      @story = Story.find(params[:id])
+      @story = Story.find( params[:id] )
     end
 
     def get_co_author
-      User.where(email: params[:co_author]).first
+      User.where( email: params[:co_author] ).first
     end
 
     def story_params
@@ -69,7 +71,7 @@ class StoriesController < ApplicationController
 
     def assign_story_roles
       s = StoryRole.where( story_id: @story.id,
-        user_id:  get_co_author.id).first
+        user_id:  get_co_author.id ).first
       s.role = :co_author
       s.save
 
@@ -86,5 +88,15 @@ class StoriesController < ApplicationController
         stories = current_user.stories
       end
       stories
+    end
+
+    def get_friends
+      friends = []
+      current_user.stories.each do |story|
+        story.users.each do |user|
+          friends << user.email if user.email != current_user.email
+        end
+      end
+      friends.uniq
     end
 end
