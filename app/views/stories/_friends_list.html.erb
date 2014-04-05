@@ -1,0 +1,8 @@
+<div class="panel friends_list">
+  <p class="lead">Your Co-Authors</p>
+  <ul class="fa-ul">
+    <% @friends.each do |friend| %>
+      <%= content_tag(:li, fa_icon("user", text: friend, class:"fa-li") ) %>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,17 @@
+  <% if notice %>
+    <script type="text/javascript" charset="utf-8">
+      window.setTimeout(function() { $(".alert-box").fadeOut(500); }, 3000);
+    </script>
+    <div data-options="animation:fadeout;" data-alert class="alert-box success">
+      <%= notice %>
+      <a href="" class="close">×</a>
+    </div>
+  <% end %>
+  <% if alert %>
+    <script type="text/javascript" charset="utf-8">
+      window.setTimeout(function() { $(".alert-box").fadeOut(500); }, 3000);
+    </script>
+    <div data-options="animation:fadeout;" data-alert class="alert-box alert">
+      <%= alert %><a href="" class="close">×</a>
+    </div>
+  <% end %>

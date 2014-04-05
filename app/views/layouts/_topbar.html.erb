@@ -1,0 +1,26 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="">Epic Prose</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!--  Right nav section  -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#"><%= current_user && current_user.email %></a>
+        <ul class="dropdown">
+          <% if user_signed_in? %>
+            <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+            <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+          <% else %>
+            <li> <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> </li>
+            <li> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</nav>
