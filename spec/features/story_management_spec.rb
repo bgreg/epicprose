@@ -37,7 +37,7 @@ feature "Story Management" do
     visit stories_path( authorized_user )
     expect {
       page.evaluate_script( 'window.confirm = function() {return true;}' )
-      click_link(  "Destroy"  ).first
+      click_link(  "Delete"  ).first
     }.to change( Story, :count ).by( -1 )
   end
 end
