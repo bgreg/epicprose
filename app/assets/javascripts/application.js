@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require responsive-tables
 //= require_tree .
 
 $(document).foundation();
