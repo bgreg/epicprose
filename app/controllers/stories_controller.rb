@@ -13,9 +13,6 @@ class StoriesController < ApplicationController
     @friends = get_friends
   end
 
-  def edit
-  end
-
   def create
     co_author = get_co_author
     redirect_to new_story_path, alert: "valid co-author email required" and return unless co_author 
@@ -31,18 +28,6 @@ class StoriesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @story }
       else
         format.html { render action: 'new' }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @story.update( story_params )
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end

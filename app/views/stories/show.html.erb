@@ -10,7 +10,7 @@
 <p>
   <h3>Category: <%= @story.category.body %></h3>
 </p>
-<p><strong>Co Author:</strong><%= get_co_author(@story.id)%></p>
+<p><strong>Co Author:</strong> <%= get_co_author(@story.id)%></p>
 <p><strong>Turn:</strong> <%= get_user_turn( @story.turn ) %></p>
 <hr />
 <h3>Chapters</h3>

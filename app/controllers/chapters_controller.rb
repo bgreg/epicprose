@@ -12,9 +12,6 @@ class ChaptersController < ApplicationController
     @chapter = Chapter.new
   end
 
-  def edit
-  end
-
   def create
     @chapter = Chapter.new(chapter_params)
     story = Story.find( params[:story_id] )
@@ -31,18 +28,6 @@ class ChaptersController < ApplicationController
                       status: :created, location: [:story,@chapter]}
       else
         format.html { render action: 'new' }
-        format.json { render json: @chapter.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @chapter.update(chapter_params)
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end

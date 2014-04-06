@@ -16,7 +16,7 @@ describe StoriesController do
     end
 
     it "routes to #edit" do
-      get("/stories/1/edit").should route_to("stories#edit", :id => "1")
+      get("/stories/1/edit").should_not be_routable
     end
 
     it "routes to #create" do
@@ -24,7 +24,7 @@ describe StoriesController do
     end
 
     it "routes to #update" do
-      put("/stories/1").should route_to("stories#update", :id => "1")
+      put("/stories/1").should_not be_routable
     end
 
     it "routes to #destroy" do
