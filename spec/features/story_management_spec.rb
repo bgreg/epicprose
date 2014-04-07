@@ -18,6 +18,16 @@ feature "Story Management" do
      page.should have_content( "Your Stories" )
   end
 
+  scenario "You should not be able to add yourself to a story" do
+    visit new_story_path( authorized_user )
+    fill_in "story_title", with: ValidString.short
+
+    fill_in "co_author", with: authorized_user.email
+    click_button "Create Story"
+
+    expect( page ).to have_text( "valid co-author email required" )
+  end
+
   scenario "User creates a new story", js: true do
     visit new_story_path( authorized_user )
     fill_in "story_title", with: ValidString.short

@@ -16,6 +16,7 @@ class StoriesController < ApplicationController
   def create
     co_author = get_co_author
     redirect_to new_story_path, alert: "valid co-author email required" and return unless co_author 
+
     @story = Story.new( story_params )
     @story.turn = current_user.id
 
@@ -47,7 +48,9 @@ class StoriesController < ApplicationController
     end
 
     def get_co_author
-      User.where( email: params[:co_author] ).first
+      user = User.where( email: params[:co_author] ).first
+      user = nil if user.id == current_user.id
+      user
     end
 
     def story_params
