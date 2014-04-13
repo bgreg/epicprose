@@ -30,9 +30,9 @@ gem 'unicorn'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
-gem 'simplecov'
 
 group :development, :test do
+  gem 'simplecov'
   gem 'sqlite3'
   gem 'rails-footnotes'
   gem 'rspec-rails'
