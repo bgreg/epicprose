@@ -2,16 +2,14 @@ require "spec_helper"
 
 feature "Chapter Management" do
 
-  let( :authorized_user ){ RequestHelpers::Login.create_logged_in_user }
-
-  scenario  "has a valid factory" do
-    authorized_user.should be_an_instance_of( User )
-  end
-
-  scenario "User creates a new story and add a chapter" do
+  scenario "User creates a new story and add a chapter", js:true do
+    authorized_user =  create(:user)
     chapter_string = ValidString.short
+    visit "/"
 
+    sign_in_user( authorized_user )
     visit new_story_path( authorized_user )
+
     fill_in "story_title", with: ValidString.short
     fill_in "co_author", with: "seed.mcseed_1@gmail.com"
     click_button "Create Story"
@@ -23,4 +21,56 @@ feature "Chapter Management" do
     page.should have_content(chapter_string)
   end
 end
+feature "Users should be able to play a game through" do
 
+  scenario "Two users can play a game and it will show coompleted when done", js:true  do
+    story_title = ValidString.short
+    chapter_string = ValidString.short
+    player1 = create(:user)
+    player2 = create(:user) 
+    visit "/"
+
+    play_a_game( player1, player2, story_title )
+    sign_in_user( player1 )
+
+    page.all("td").each do |td|
+      next unless td.has_selector?( "h3" , text: story_title )
+      page.should have_content("completed")
+    end
+  end
+  scenario "Two users can play a game and it will not show your turn on a completed story", js:true  do
+    story_title = ValidString.short
+    chapter_string = ValidString.short
+    player1 = create(:user)
+    player2 = create(:user) 
+    visit "/"
+
+    play_a_game( player1, player2, story_title )
+    sign_in_user( player1 )
+
+    page.all("td").each do |td|
+      next unless td.has_selector?( "h3" , text: story_title )
+      page.should_not have_content("Your turn")
+    end
+  end
+
+end
+
+def play_a_game( player1, player2, story_title )
+    # make a story
+    sign_in_user( player1 )
+    visit new_story_path( player1 )
+    fill_in "story_title", with: story_title
+    fill_in "co_author", with: player2.email
+    click_button "Create Story"
+    story_uri = URI.parse(current_url).path
+    logout( player1 )
+
+    # play the story
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+end

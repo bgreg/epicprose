@@ -30,4 +30,27 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 end
 
+def sign_in_add_chapter_sign_out ( user, story_uri, chapter_string )
+    sign_in_user( user )
+    visit story_uri
+    create_a_chapter( user, chapter_string )
+    logout(user)
+end
 
+def sign_in_user(user)
+    fill_in "user_email", with: user.email
+    fill_in "user_password", with: user.password
+    click_button "Sign in"
+end
+
+def logout(user)
+  click_link user.email
+  click_link "Logout"
+end
+
+def create_a_chapter( user, chapter_string )
+  # save_and_open_page
+    click_link "New Chapter"
+    fill_in "chapter_body", with: chapter_string
+    click_button "Create Chapter"
+end
