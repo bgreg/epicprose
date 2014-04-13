@@ -4,6 +4,7 @@ class CreateStories < ActiveRecord::Migration
       t.string :title
       t.string :picture_url
       t.integer :turn
+      t.boolean :completed
 
       t.timestamps
     end

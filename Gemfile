@@ -30,6 +30,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
+gem 'simplecov'
 
 group :development, :test do
   gem 'sqlite3'
@@ -44,6 +45,6 @@ group :development, :test do
   gem 'guid'
 end
 
-group :production do 
+group :production do
   gem 'mysql2'
 end

@@ -15,6 +15,7 @@ class Story < ActiveRecord::Base
     }
 
   before_create :before_create
+  before_save :before_save
 
 private
 
@@ -26,4 +27,11 @@ private
   def chapter_limit_not_reached
     errors.add(:story, "Cannot have more than 6 chapters") if chapters.size > 6
   end
+
+  def before_save
+    if chapters.size == 6
+      self.completed = true
+    end
+  end
+
 end

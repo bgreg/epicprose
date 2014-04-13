@@ -21,16 +21,18 @@
             <td><h3><%= story.category.body %></h3></td>
             <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
             <td>
-               <% if story.chapters.length == 6 %>
+               <% if story.completed %>
                   <p class="label success">completed</p>
                <% elsif story.chapters.length == 0 %>
-                  <p class="label alert"><%= story.chapters.length %></p>
+                  <p class="label alert"><%= story.chapters.length %> :( </p>
                <% else %>
                   <p class="lead"><%= story.chapters.length %></p>
                <% end %>
             </td>
-            <td> 
-                <%= get_user_turn( story.turn ) %>
+            <td>
+               <% unless story.completed  %>
+                  <%= get_user_turn( story.turn ) %>
+               <% end %>
             </td>
             <td><%= link_to 'Show',
                     story,

@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140324034828) do
     t.string   "title"
     t.string   "picture_url"
     t.integer  "turn"
+    t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -14,6 +14,21 @@ describe Story do
       story.chapters.length.should be(6)
     end
 
+    it "should set completed flag to true after 6 chapters are added" do
+      story = Story.new(title: "Demo Story", picture_url: "https://www.rubygems.com")
+      6.times{ story.chapters << Chapter.create(body: "test") }
+      story.save
+      story.completed.should be_true
+    end
+
+    it "should allow the completed boolean flag to be set" do 
+      expect{
+        story = Story.new(title: "Demo Story", picture_url: "https://www.rubygems.com")
+        story.completed = true
+        story.save
+      }.to change(Story, :count).by(1)
+    end
+
     it "should save with a valid url" do 
       expect{
         story = Story.new( title: "test", picture_url: "https://www.rubygems.com" )
