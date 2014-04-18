@@ -30,6 +30,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
+gem 'resque'
 
 group :development, :test do
   gem 'simplecov'
