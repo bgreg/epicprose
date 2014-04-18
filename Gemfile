@@ -31,6 +31,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
 gem 'resque'
+gem 'resque_mailer'
 
 group :development, :test do
   gem 'simplecov'
