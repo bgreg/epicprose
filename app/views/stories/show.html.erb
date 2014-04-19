@@ -10,7 +10,7 @@
 <p>
   <h3>Category: <%= @story.category.body %></h3>
 </p>
-<p><strong>Co Author:</strong> <%= get_co_author(@story.id)%></p>
+<p><strong>Co Author:</strong> <%= get_co_author( @story.id )%></p>
 <p><strong>Turn:</strong> <%= get_user_turn( @story.turn ) %></p>
 <hr />
 <h3>Chapters</h3>
@@ -26,10 +26,10 @@
   <tbody>
     <% @story.chapters.each do |chapter| %>
       <tr>
-        <td><%= chapter.user.email%></td>
+        <td><%= chapter.user.email %></td>
         <td><%= chapter.body %></td>
         <td><%= link_to 'Show',
-                story_chapter_path(chapter.story_id, chapter.id),
+                story_chapter_path( chapter.story_id, chapter.id ),
                 class: "button small" %>
         </td>
         <td>

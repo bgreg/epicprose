@@ -7,6 +7,7 @@ class StoryRoles < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :story_roles, :user_id
     add_index :story_roles, :story_id
     add_index :story_roles, :role

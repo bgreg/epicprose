@@ -7,8 +7,6 @@ describe StoriesHelper do
     @player1 = create(:user)
     @player2 = create(:user)
 
-    current_user = @player1
-     # login_as @player1, scope: :user, run_callbacks: false
     @story.turn = @player2.id
     @story.users << @player1
     @story.users << @player2

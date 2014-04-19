@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: [ :show, :edit, :update, :destroy]
-  before_action :set_chapters, only: [:index]
+  before_action :set_chapter,  only:  [ :show, :edit, :update, :destroy ]
+  before_action :set_chapters, only:  [ :index ]
 
   def index
   end
@@ -13,19 +13,21 @@ class ChaptersController < ApplicationController
   end
 
   def create
-    @chapter = Chapter.new(chapter_params)
+    @chapter = Chapter.new( chapter_params )
     story = Story.find( params[:story_id] )
 
     @chapter.user = current_user
     story.chapters << @chapter
-    story.turn = get_other_user(current_user, story)
+    story.turn = get_other_user( current_user, story )
 
     respond_to do |format|
       if @chapter.save && story.save
-        format.html { redirect_to story_path(story.id),
+
+        ChapterMailer.new_chapter_email( story, @chapter ).deliver
+        format.html { redirect_to story_path( story.id ),
                       notice: 'Chapter was successfully created.' }
         format.json { render action: 'show',
-                      status: :created, location: [:story,@chapter]}
+                      status: :created, location: [ :story, @chapter ] }
       else
         format.html { render action: 'new' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
@@ -36,27 +38,27 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter.destroy
     respond_to do |format|
-      format.html { redirect_to story_path(params[:story_id])}
+      format.html { redirect_to story_path( params[:story_id] ) }
       format.json { head :no_content }
     end
   end
 
-  private
+private
+  def chapter_params
+    params.require( :chapter ).permit( :body )
+  end
+
   def set_chapter
-    @chapter = Story.find(params[:story_id]).chapters.find(params[:id])
+    @chapter = Story.find( params[:story_id]).chapters.find(params[:id] )
   end
 
   def set_chapters
-    @chapters = Story.find(params[:story_id]).chapters 
+    @chapters = Story.find( params[:story_id] ).chapters
   end
 
-  def chapter_params
-    params.require(:chapter).permit(:body)
-  end
-
-  def get_other_user(user,story)
+  def get_other_user( user, story )
     role = StoryRole.where( "story_id = :story_id AND user_id != :user_id",
-                            { story_id: story.id, user_id: user.id} ).first
+                          { story_id: story.id, user_id: user.id} ).first
     role.user.id.to_i
   end
 end

@@ -24,7 +24,7 @@
                <% if story.completed %>
                   <p class="label success">completed</p>
                <% elsif story.chapters.length == 0 %>
-                  <p class="label alert"><%= story.chapters.length %> :( </p>
+                  <p class="label alert"><%= story.chapters.length %></p>
                <% else %>
                   <p class="lead"><%= story.chapters.length %></p>
                <% end %>
