@@ -386,7 +386,10 @@
         null
       ],
       "/Users/bertmcguirk/sites/epicprose/config/initializers/resque_mailer.rb": [
-        1
+        1,
+        1,
+        1,
+        null
       ],
       "/Users/bertmcguirk/sites/epicprose/config/initializers/secret_token.rb": [
         null,
@@ -432,6 +435,7 @@
         null,
         1,
         1,
+        1,
         null,
         null
       ],
@@ -455,8 +459,6 @@
         null,
         1,
         1,
-        null,
-        null,
         null,
         null
       ],
@@ -617,19 +619,19 @@
         1,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
-        0,
+        3,
         null,
         null,
         null,
@@ -645,20 +647,13 @@
         null,
         null,
         null,
+        3,
+        3,
         null,
-        0,
-        0,
         null,
-        null,
-        null
-      ],
-      "/Users/bertmcguirk/sites/epicprose/app/mailers/chapter_mailer.rb": [
-        1,
-        1,
-        1,
         null
       ]
     },
-    "timestamp": 1397863787
+    "timestamp": 1397938431
   }
 }

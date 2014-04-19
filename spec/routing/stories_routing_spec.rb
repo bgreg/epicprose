@@ -1,5 +1,4 @@
 require "spec_helper"
-
 describe StoriesController do
   describe "routing" do
 
@@ -30,6 +29,5 @@ describe StoriesController do
     it "routes to #destroy" do
       delete("/stories/1").should route_to("stories#destroy", :id => "1")
     end
-
   end
 end

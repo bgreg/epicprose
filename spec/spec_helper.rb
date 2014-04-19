@@ -57,3 +57,4 @@ def create_a_chapter( user, chapter_string )
     fill_in "chapter_body", with: chapter_string
     click_button "Create Chapter"
 end
+

@@ -29,7 +29,6 @@ class ValidString
       "bag Schlitz Pinterest, aliquip trust fund butcher Pitchfork "+
       "kale chips salvia Banksy art party normcore bicycle rights organic."+
       "Master cleanse banh mi scenester dreamcatcher Marfa Pitchfork swag kale chips."
-
     awesome_text = awesome_text.split(" ").shuffle!
     awesome_text.take(length).join(" ")
   end

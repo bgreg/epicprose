@@ -8,6 +8,4 @@ FactoryGirl.define do
   factory :category do
     body "test"
   end
-
-
 end
