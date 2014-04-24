@@ -58,3 +58,21 @@ def create_a_chapter( user, chapter_string )
     click_button "Create Chapter"
 end
 
+def play_a_game( player1, player2, story_title )
+    # make a story
+    sign_in_user( player1 )
+    visit new_story_path( player1 )
+    fill_in "story_title", with: story_title
+    fill_in "co_author", with: player2.email
+    click_button "Create Story"
+    story_uri = URI.parse(current_url).path
+    logout( player1 )
+
+    # play the story
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
+    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
+end

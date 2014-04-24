@@ -1,8 +1,7 @@
 require "spec_helper"
 
 feature "Chapter Management" do
-
-  scenario "User creates a new story and add a chapter", js:true do
+  scenario "User creates a new story and add a chapter" do
     authorized_user =  create(:user)
     chapter_string = ValidString.short
     visit "/"
@@ -21,9 +20,9 @@ feature "Chapter Management" do
     page.should have_content(chapter_string)
   end
 end
-feature "Users should be able to play a game through" do
 
-  scenario "Two users can play a game and it will show coompleted when done", js:true  do
+feature "Playing the game, " do
+  scenario "Two users can play a game and it will show completed when done" do
     story_title = ValidString.short
     chapter_string = ValidString.short
     player1 = create(:user)
@@ -38,11 +37,11 @@ feature "Users should be able to play a game through" do
       page.should have_content("completed")
     end
   end
-  scenario "Two users can play a game and it will not show your turn on a completed story", js:true  do
+  scenario "Two users can play a game and it will not show your turn on a completed story",js:true do
     story_title = ValidString.short
     chapter_string = ValidString.short
     player1 = create(:user)
-    player2 = create(:user) 
+    player2 = create(:user)
     visit "/"
 
     play_a_game( player1, player2, story_title )
@@ -54,23 +53,18 @@ feature "Users should be able to play a game through" do
     end
   end
 
+  feature "Viewing stories on the dashboard" do
+    scenario 'User1 should start a story with user2, and it should only show up once on each dashboard' do
+      story_title = ValidString.short
+      chapter_string = ValidString.short
+      player1 = create(:user)
+      player2 = create(:user) 
+      visit "/"
+
+      play_a_game( player1, player2, story_title )
+      sign_in_user( player1 )
+      page.should have_xpath('//h3', text: story_title, count: 1)
+    end
+  end
 end
 
-def play_a_game( player1, player2, story_title )
-    # make a story
-    sign_in_user( player1 )
-    visit new_story_path( player1 )
-    fill_in "story_title", with: story_title
-    fill_in "co_author", with: player2.email
-    click_button "Create Story"
-    story_uri = URI.parse(current_url).path
-    logout( player1 )
-
-    # play the story
-    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
-    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
-    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
-    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
-    sign_in_add_chapter_sign_out( player1, story_uri, ValidString.short )
-    sign_in_add_chapter_sign_out( player2, story_uri, ValidString.short )
-end
