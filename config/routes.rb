@@ -3,8 +3,8 @@ Epicprose::Application.routes.draw do
   devise_for :users
   root to: "stories#index"
 
-  resources :stories, only:[:new, :index,:show,:create,:destroy]  do
-    resources :chapters, only:[:new, :index,:show,:create,:destroy]
+  resources :stories, only:[:new,:index,:show,:create,:destroy]  do
+    resources :chapters, only:[:new,:create,:destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
