@@ -3,5 +3,5 @@
 
 Todo:
 - [x] Use new list markdown
-- [] finish resque-mailer setup
-- [] finish pagination setup
+- [ ] finish resque-mailer setup
+- [ ] finish pagination setup
