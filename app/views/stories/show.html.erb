@@ -1,10 +1,10 @@
 <h2><%= @story.title %></h2>
+<p><strong>Category:</strong> <%= @story.category.body %></p>
 
 <div>
   <img src="<%= @story.picture_url %>" alt="Randomly Assigned Image" />
 </div>
 
-<p><strong>Category:</strong> <%= @story.category.body %></p>
 <p><strong>Co Author:</strong> <%= get_co_author( @story.id )%></p>
   <% if !@story.completed  %>
     <p><strong>Turn:</strong> <%= get_user_turn( @story.turn ) %></p>
