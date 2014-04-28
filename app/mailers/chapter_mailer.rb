@@ -1,4 +1,4 @@
-class ChapterMailer <  AsyncMailer
+class ChapterMailer <   ActionMailer::Base
   default from: "do-not-reply@epicprose.com"
   def new_chapter_email( story, chapter )
     @story = story

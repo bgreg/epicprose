@@ -18,14 +18,14 @@
   <thead>
     <tr>
       <th>user</th>
-      <th>Body</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @story.chapters.each do |chapter| %>
       <tr>
         <td><%= chapter.user.email %></td>
-        <td><%= chapter.body %></td>
+        <td><span class="lead"><%= chapter.body %></span></td>
       </tr>
     <% end %>
   </tbody>
