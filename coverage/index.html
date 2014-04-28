@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-04-27T21:49:31-07:00">2014-04-27T21:49:31-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-04-28T14:12:13-07:00">2014-04-28T14:12:13-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.47%</span></span>
+    (<span class="covered_percent"><span class="green">98.76%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>51</b> files in total.
-    <b>562</b> relevant lines. 
-    <span class="green"><b>559</b> lines covered</span> and
-    <span class="red"><b>3</b> lines missed </span>
+    <b>563</b> relevant lines. 
+    <span class="green"><b>556</b> lines covered</span> and
+    <span class="red"><b>7</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,11 +62,11 @@
       
       <tr>
         <td class="strong"><a href="#cae6f461cab495afb13ac4cfdfb11eab9db72daa" class="src_link" title="app/controllers/chapters_controller.rb">app/controllers/chapters_controller.rb</a></td>
-        <td class="green strong">96.0 %</td>
+        <td class="yellow strong">88.0 %</td>
         <td>44</td>
         <td>25</td>
-        <td>24</td>
-        <td>1</td>
+        <td>22</td>
+        <td>3</td>
         <td>15.9</td>
       </tr>
       
@@ -107,7 +107,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>33.1</td>
+        <td>33.6</td>
       </tr>
       
       <tr>
@@ -117,7 +117,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>17.0</td>
+        <td>17.6</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>18</td>
         <td>18</td>
         <td>0</td>
-        <td>12.1</td>
+        <td>12.2</td>
       </tr>
       
       <tr>
@@ -402,18 +402,18 @@
       
       <tr>
         <td class="strong"><a href="#f66fd01624e16c60e01dcb3e996d0ee3be4020bb" class="src_link" title="spec/features/chapter_creation_spec.rb">spec/features/chapter_creation_spec.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>104</td>
-        <td>72</td>
-        <td>72</td>
-        <td>0</td>
-        <td>1.2</td>
+        <td class="green strong">97.26 %</td>
+        <td>106</td>
+        <td>73</td>
+        <td>71</td>
+        <td>2</td>
+        <td>1.1</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#2934f93c27b8be2c0b7b04a1029a7cf33f05a025" class="src_link" title="spec/features/story_management_spec.rb">spec/features/story_management_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>53</td>
+        <td>60</td>
         <td>32</td>
         <td>32</td>
         <td>0</td>
@@ -633,11 +633,11 @@
         <div class="source_table" id="cae6f461cab495afb13ac4cfdfb11eab9db72daa">
   <div class="header">
     <h3>app/controllers/chapters_controller.rb</h3>
-    <h4><span class="green">96.0 %</span> covered</h4>
+    <h4><span class="yellow">88.0 %</span> covered</h4>
     <div>
       <b>25</b> relevant lines. 
-      <span class="green"><b>24</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="green"><b>22</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -746,14 +746,14 @@
           <code class="ruby">      if @chapter.save &amp;&amp; story.save</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="18">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="26" data-linenumber="18">
+          <span class="hits">26</span>
           
           <code class="ruby">        ChapterMailer.new_chapter_email( story, @chapter ).deliver</code>
         </li>
       
-        <li class="covered" data-hits="50" data-linenumber="19">
-          <span class="hits">50</span>
+        <li class="covered" data-hits="52" data-linenumber="19">
+          <span class="hits">52</span>
           
           <code class="ruby">        format.html { redirect_to story_path( story.id ),</code>
         </li>
@@ -764,8 +764,8 @@
           <code class="ruby">                      notice: &#39;Chapter was successfully created.&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="21">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="26" data-linenumber="21">
+          <span class="hits">26</span>
           
           <code class="ruby">        format.json { render action: &#39;show&#39;,</code>
         </li>
@@ -782,14 +782,14 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="24">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
           
           <code class="ruby">        format.html { render action: &#39;new&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="25">
+          
           
           <code class="ruby">        format.json { render json: @chapter.errors, status: :unprocessable_entity }</code>
         </li>
@@ -1214,8 +1214,8 @@
           <code class="ruby">    def set_story</code>
         </li>
       
-        <li class="covered" data-hits="59" data-linenumber="49">
-          <span class="hits">59</span>
+        <li class="covered" data-hits="60" data-linenumber="49">
+          <span class="hits">60</span>
           
           <code class="ruby">      @story = Story.find( params[:id] )</code>
         </li>
@@ -1247,7 +1247,7 @@
         <li class="covered" data-hits="9" data-linenumber="54">
           <span class="hits">9</span>
           
-          <code class="ruby">      user = nil if user.id == current_user.id</code>
+          <code class="ruby">      user = nil if user &amp;&amp; user.id == current_user.id</code>
         </li>
       
         <li class="covered" data-hits="9" data-linenumber="55">
@@ -1436,8 +1436,8 @@
           <code class="ruby">  def get_co_author( story_id )</code>
         </li>
       
-        <li class="covered" data-hits="59" data-linenumber="3">
-          <span class="hits">59</span>
+        <li class="covered" data-hits="60" data-linenumber="3">
+          <span class="hits">60</span>
           
           <code class="ruby">    StoryRole.where( story_id: story_id, role: :co_author ).first.user.email</code>
         </li>
@@ -1484,20 +1484,20 @@
           <code class="ruby">  def get_user_turn( id )</code>
         </li>
       
-        <li class="covered" data-hits="78" data-linenumber="11">
-          <span class="hits">78</span>
+        <li class="covered" data-hits="79" data-linenumber="11">
+          <span class="hits">79</span>
           
           <code class="ruby">    turn = &quot;Your turn&quot;</code>
         </li>
       
-        <li class="covered" data-hits="78" data-linenumber="12">
-          <span class="hits">78</span>
+        <li class="covered" data-hits="79" data-linenumber="12">
+          <span class="hits">79</span>
           
           <code class="ruby">    turn =  User.find( id ).email if id != current_user.id</code>
         </li>
       
-        <li class="covered" data-hits="78" data-linenumber="13">
-          <span class="hits">78</span>
+        <li class="covered" data-hits="79" data-linenumber="13">
+          <span class="hits">79</span>
           
           <code class="ruby">    turn</code>
         </li>
@@ -1550,20 +1550,20 @@
           <code class="ruby">  def new_chapter_email( story, chapter )</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="4">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="30" data-linenumber="4">
+          <span class="hits">30</span>
           
           <code class="ruby">    @story = story</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="5">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="30" data-linenumber="5">
+          <span class="hits">30</span>
           
           <code class="ruby">    @chapter = chapter</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="6">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="30" data-linenumber="6">
+          <span class="hits">30</span>
           
           <code class="ruby">    @user = User.find( @story.turn )</code>
         </li>
@@ -1574,8 +1574,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="8">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="30" data-linenumber="8">
+          <span class="hits">30</span>
           
           <code class="ruby">    mail( to: @user.email, subject: &quot;New Chapter created for #{@story.title}&quot;)</code>
         </li>
@@ -2006,8 +2006,8 @@
           <code class="ruby">  def chapter_limit_not_reached</code>
         </li>
       
-        <li class="covered" data-hits="105" data-linenumber="28">
-          <span class="hits">105</span>
+        <li class="covered" data-hits="106" data-linenumber="28">
+          <span class="hits">106</span>
           
           <code class="ruby">    errors.add(:story, &quot;Cannot have more than 6 chapters&quot;) if chapters.size &gt; 6</code>
         </li>
@@ -2030,8 +2030,8 @@
           <code class="ruby">  def before_save</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="32">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="48" data-linenumber="32">
+          <span class="hits">48</span>
           
           <code class="ruby">    if chapters.size == 6</code>
         </li>
@@ -5805,11 +5805,11 @@
         <div class="source_table" id="f66fd01624e16c60e01dcb3e996d0ee3be4020bb">
   <div class="header">
     <h3>spec/features/chapter_creation_spec.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">97.26 %</span> covered</h4>
     <div>
-      <b>72</b> relevant lines. 
-      <span class="green"><b>72</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>73</b> relevant lines. 
+      <span class="green"><b>71</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -6032,8 +6032,8 @@
           <code class="ruby">      next unless td.has_selector?( &quot;h3&quot; , text: story_title )</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="37">
+          
           
           <code class="ruby">      page.should have_content(&quot;completed&quot;)</code>
         </li>
@@ -6200,8 +6200,8 @@
           <code class="ruby">      next unless td.has_selector?( &quot;h3&quot; , text: story_title )</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="65">
+          
           
           <code class="ruby">      page.should_not have_content(&quot;Your turn&quot;)</code>
         </li>
@@ -6284,157 +6284,169 @@
           <code class="ruby">      sign_in_user( player1 )</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="79">
           
-          <code class="ruby">      page.should have_xpath(&#39;//h3&#39;, text: story_title, count: 1)</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      page.should have_xpath(&#39;//h3&#39;, text: story_title.truncate(20) , count: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="82">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="83">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="83">
           
-          <code class="ruby">  feature &quot;posting bad request to chapter &quot; do </code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="84">
           <span class="hits">1</span>
           
-          <code class="ruby">    scenario &quot;new story is created ok, bad chapter is attempted&quot; , js: true do</code>
+          <code class="ruby">  feature &quot;posting bad request to chapter &quot; do </code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="85">
           <span class="hits">1</span>
           
-          <code class="ruby">      authorized_user =  create(:user)</code>
+          <code class="ruby">    scenario &quot;new story is created ok, bad chapter is attempted&quot; , js: true do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="86">
           <span class="hits">1</span>
           
-          <code class="ruby">      chapter_string = ValidString.long</code>
+          <code class="ruby">      authorized_user =  create(:user)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="87">
           <span class="hits">1</span>
           
+          <code class="ruby">      chapter_string = ValidString.long</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="88">
+          <span class="hits">1</span>
+          
           <code class="ruby">      visit &quot;/&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="88">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="89">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      sign_in_user( authorized_user )</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="90">
           <span class="hits">1</span>
           
+          <code class="ruby">      sign_in_user( authorized_user )</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="91">
+          <span class="hits">1</span>
+          
           <code class="ruby">      visit new_story_path( authorized_user )</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="92">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="92">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      fill_in &quot;story_title&quot;, with: ValidString.short</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
-          <code class="ruby">      fill_in &quot;co_author&quot;, with: &quot;seed.mcseed_1@gmail.com&quot;</code>
+          <code class="ruby">      fill_in &quot;story_title&quot;, with: ValidString.short</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="94">
           <span class="hits">1</span>
           
-          <code class="ruby">      click_button &quot;Create Story&quot;</code>
+          <code class="ruby">      fill_in &quot;co_author&quot;, with: &quot;seed.mcseed_1@gmail.com&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="covered" data-hits="1" data-linenumber="95">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      click_button &quot;Create Story&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="96">
           <span class="hits">1</span>
           
-          <code class="ruby">      click_link &quot;New Chapter&quot;</code>
+          <code class="ruby">      this_story = current_path</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="97">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      fill_in &quot;chapter_body&quot;, with: chapter_string</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="98">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      click_button &quot;Save&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="97">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="98">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      click_link &quot;New Chapter&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="99">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      fill_in &quot;chapter_body&quot;, with: chapter_string</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="100">
           <span class="hits">1</span>
           
-          <code class="ruby">      page.should have_content(&quot;Body is too long (maximum is 120 characters)&quot;)</code>
+          <code class="ruby">      click_button &quot;Save&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="101">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="102">
+        <li class="covered" data-hits="1" data-linenumber="102">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      current_path.should eq this_story</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="103">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="104">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="105">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="106">
           
           
           <code class="ruby"></code>
@@ -6689,43 +6701,43 @@
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # scenario &quot;User cannot create an empty story&quot;, js: true do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="40">
           
-          <code class="ruby">  scenario &quot;User can delete a story&quot;, js: true do</code>
+          
+          <code class="ruby">  #   visit new_story_path( authorized_user )</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="41">
           
-          <code class="ruby">    visit new_story_path( authorized_user )</code>
+          
+          <code class="ruby">  #   fill_in &quot;story_title&quot;, with: &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="42">
           
-          <code class="ruby">    fill_in &quot;story_title&quot;, with: ValidString.short</code>
+          
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   fill_in &quot;co_author&quot;, with: &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="44">
           
-          <code class="ruby">    fill_in &quot;co_author&quot;, with: &quot;seed.mcseed_1@gmail.com&quot;</code>
+          
+          <code class="ruby">  #   click_button &quot;Create Story&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="45">
           
-          <code class="ruby">    click_button &quot;Create Story&quot;</code>
+          
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
@@ -6737,40 +6749,82 @@
         <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit stories_path( authorized_user )</code>
+          <code class="ruby">  scenario &quot;User can delete a story&quot;, js: true do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect {</code>
+          <code class="ruby">    visit new_story_path( authorized_user )</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="49">
           <span class="hits">1</span>
           
+          <code class="ruby">    fill_in &quot;story_title&quot;, with: ValidString.short</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    fill_in &quot;co_author&quot;, with: &quot;seed.mcseed_1@gmail.com&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    click_button &quot;Create Story&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit stories_path( authorized_user )</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect {</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
+          
           <code class="ruby">      page.evaluate_script( &#39;window.confirm = function() {return true;}&#39; )</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
           <code class="ruby">      click_link(  &quot;Delete&quot;  ).first</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby">    }.to change( Story, :count ).by( -1 )</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">end</code>

@@ -76,7 +76,8 @@ feature "Playing the game, " do
 
       play_a_game( player1, player2, story_title )
       sign_in_user( player1 )
-      page.should have_xpath('//h3', text: story_title, count: 1)
+
+      page.should have_xpath('//h3', text: story_title.truncate(20) , count: 1)
     end
   end
 
@@ -92,12 +93,13 @@ feature "Playing the game, " do
       fill_in "story_title", with: ValidString.short
       fill_in "co_author", with: "seed.mcseed_1@gmail.com"
       click_button "Create Story"
+      this_story = current_path
 
       click_link "New Chapter"
       fill_in "chapter_body", with: chapter_string
       click_button "Save"
 
-      page.should have_content("Body is too long (maximum is 120 characters)")
+      current_path.should eq this_story
     end
   end
 end
