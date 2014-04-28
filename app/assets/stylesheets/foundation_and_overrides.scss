@@ -63,7 +63,7 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
+   $body-bg: #fafafa;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -1327,3 +1327,17 @@ $default-float: left;
 @import 'foundation';
 //a:visited {color:#fff !important;}  
 
+.text-success{
+  color: $success-color !important;
+  font-color: $success-color !important;
+}
+.text-alert{
+  font-color: $alert-color !important;
+  color: $alert-color !important;
+}
+.text-primary{
+  font-color: $primary-color;
+}
+.text-secondary{
+  font-color: $secondary-color;
+}

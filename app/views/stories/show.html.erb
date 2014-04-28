@@ -1,11 +1,10 @@
-<h2>Title: <%= @story.title %></h2>
+<h2><%= @story.title %></h2>
 
 <div>
-  <strong>Randomly assigned image</strong>
-  <td><img src="<%= @story.picture_url %>" alt="" /></td>
+  <img src="<%= @story.picture_url %>" alt="Randomly Assigned Image" />
 </div>
 
-<h3>Category: <%= @story.category.body %></h3>
+<p><strong>Category:</strong> <%= @story.category.body %></p>
 <p><strong>Co Author:</strong> <%= get_co_author( @story.id )%></p>
   <% if !@story.completed  %>
     <p><strong>Turn:</strong> <%= get_user_turn( @story.turn ) %></p>
@@ -24,8 +23,8 @@
   <tbody>
     <% @story.chapters.each do |chapter| %>
       <tr>
-        <td><%= chapter.user.email %></td>
-        <td><span class="lead"><%= chapter.body %></span></td>
+        <td><h4><%= chapter.user.email %></h4></td>
+        <td><h4><%= chapter.body %></h4></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,3 +1,24 @@
-<h1>New chapter</h1>
-<%= render 'form' %>
-<%= link_to 'Back', story_path(params[:story_id]), class: "button secondary" %>
+<br/>
+<h4>New Chapter </h4>
+<%= form_for([:story, @chapter]) do |f| %>
+  <% if @chapter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
+
+      <ul>
+        <% @chapter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "button",value: "Save" %>
+    <%= link_to 'Cancel', story_path(params[:story_id]), class: "button alert" %>
+  </div>
+<% end %>

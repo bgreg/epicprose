@@ -3,19 +3,43 @@
 
 <fieldset>
   <legend>Sign in</legend>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+  <div class="row">
+    <div class="large-6 large-centered columns">
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-    <div><%= f.label :password %><br />
-    <%= f.password_field :password %></div>
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.label :email %>
+            <%= f.email_field :email, :autofocus => true %>
+          </div>
+        </div>
 
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
+        </div>
 
-    <div><%= f.submit "Sign in", class: "button small" %></div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="row">
+            <div class="large-12 columns">
+              <label for="remember_me">
+                <%= f.check_box :remember_me %> Remember Me 
+               </label>
+            </div>
+          </div>
+        <% end -%>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <div><%= f.submit "Sign in", class: "button small" %></div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
 </fieldset>

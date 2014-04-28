@@ -55,7 +55,7 @@ def create_a_chapter( user, chapter_string )
   # save_and_open_page
     click_link "New Chapter"
     fill_in "chapter_body", with: chapter_string
-    click_button "Create Chapter"
+    click_button "Save"
 end
 
 def play_a_game( player1, player2, story_title )

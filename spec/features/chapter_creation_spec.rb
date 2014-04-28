@@ -16,7 +16,7 @@ feature "Chapter Management" do
     click_link "New Chapter"
     fill_in "chapter_body", with: chapter_string
 
-    click_button "Create Chapter"
+    click_button "Save"
     page.should have_content(chapter_string)
   end
 end
@@ -95,7 +95,7 @@ feature "Playing the game, " do
 
       click_link "New Chapter"
       fill_in "chapter_body", with: chapter_string
-      click_button "Create Chapter"
+      click_button "Save"
 
       page.should have_content("Body is too long (maximum is 120 characters)")
     end
