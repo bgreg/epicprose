@@ -36,6 +36,13 @@ feature "Story Management" do
     click_button "Create Story"
     expect( page ).to have_text( "Story was successfully created." )
   end
+  # scenario "User cannot create an empty story", js: true do
+  #   visit new_story_path( authorized_user )
+  #   fill_in "story_title", with: ""
+  #
+  #   fill_in "co_author", with: ""
+  #   click_button "Create Story"
+  # end
 
   scenario "User can delete a story", js: true do
     visit new_story_path( authorized_user )

@@ -51,7 +51,7 @@ class StoriesController < ApplicationController
 
     def get_co_author
       user = User.where( email: params[:co_author] ).first
-      user = nil if user.id == current_user.id
+      user = nil if user && user.id == current_user.id
       user
     end
 

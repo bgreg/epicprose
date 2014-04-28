@@ -12,13 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <label for="title"> Title
+      <%= f.text_field :title, required: true, maxlength: 120 %>
+    </label>
   </div>
 
   <div class="field">
-    <%= label_tag :co_author_email %><br>
-    <%= text_field_tag :co_author  %>
+    <label for="co_author">Co Author
+      <%= email_field_tag :co_author, nil, required: true, maxlength: 120  %>
+    </label>
   </div>
 
   <div class="actions">

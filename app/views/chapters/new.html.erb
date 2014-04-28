@@ -13,8 +13,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :body %>
+  <div class="field chapter-field">
+    <%= f.text_area :body, required: true, maxlength: 120  %>
   </div>
 
   <div class="actions">
