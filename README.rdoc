@@ -1,3 +1,6 @@
 == README
 * Ruby version 2.1.1
 
+Todo: 
+1) finish resque-mailer setup
+2) finish pagination setup

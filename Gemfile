@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'zurb-foundation'
 gem 'resque'
 gem 'resque_mailer'
+gem 'kaminari'
 
 group :development, :test do
   gem 'simplecov'
