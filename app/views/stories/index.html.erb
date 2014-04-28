@@ -1,8 +1,12 @@
 <div class="row">
-  <div class="large-12 large-centered columns ">
-    <h2><%= t('stories_page_headline') %></h2>
-    <%= link_to 'New Story', new_story_path, class: "button secondary right" %>
+  <div class="large-12 columns">
+    <h2 class="left"><%= t('stories_page_headline') %></h2>
+    <%= link_to 'New Story', new_story_path, class: "button right" %>
     <!-- <span class="paginate&#45;thing"><%# paginate @stories %></span> -->
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 large-centered columns ">
     <table class="responsive">
       <thead>
         <tr>
