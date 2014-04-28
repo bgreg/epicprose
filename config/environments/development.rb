@@ -30,3 +30,7 @@ Epicprose::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address:  "smtp.comcast.net" }
 end
+
+if defined?(Footnotes) && Rails.env.development?
+  Footnotes.run! # first of all
+end

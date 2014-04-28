@@ -1,12 +1,5 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter,  only:  [ :show, :edit, :update, :destroy ]
-  before_action :set_chapters, only:  [ :index ]
-
-  def index
-  end
-
-  def show
-  end
+  before_action :set_chapter,  only:  [ :show, :edit, :update ]
 
   def new
     @chapter = Chapter.new
@@ -34,14 +27,6 @@ class ChaptersController < ApplicationController
     end
   end
 
-  def destroy
-    @chapter.destroy
-    respond_to do |format|
-      format.html { redirect_to story_path( params[:story_id] ) }
-      format.json { head :no_content }
-    end
-  end
-
 private
   def chapter_params
     params.require( :chapter ).permit( :body )
@@ -49,10 +34,6 @@ private
 
   def set_chapter
     @chapter = Story.find( params[:story_id]).chapters.find(params[:id] )
-  end
-
-  def set_chapters
-    @chapters = Story.find( params[:story_id] ).chapters
   end
 
   def get_other_user( user, story )

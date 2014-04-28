@@ -7,19 +7,18 @@
           <th width="300">Title</th>
           <th width="300">Category</th>
           <th width='500'>Image</th>
-          <th width='100'>chapters</th>
+          <th width='10'>chapters</th>
           <th width='100'>turn</th>
           <th width='100'></th>
           <th width='100'></th>
         </tr>
       </thead>
-
       <tbody>
         <% @stories.each do |story| %>
           <tr>
             <td><h3><%= story.title %></h3></td>
             <td><h3><%= story.category.body %></h3></td>
-            <td><img src="<%= story.picture_url %>" alt="Random picture"/></td>
+            <td class="story_index"><img src="<%= story.picture_url %>" alt="Random picture"/></td>
             <td>
                <% if story.completed %>
                   <p class="label success">completed</p>
@@ -30,18 +29,15 @@
                <% end %>
             </td>
             <td>
-               <% unless story.completed  %>
-                  <%= get_user_turn( story.turn ) %>
-               <% end %>
+               <%= get_user_turn( story.turn ) unless story.completed %>
             </td>
-            <td><%= link_to 'Show',
-                    story,
-                    class: "button small" %>
+            <td>
+              <%= link_to 'Show', story, class: "button small" %>
             </td>
-            <td><%= link_to 'Delete', story,
-                    method: :delete,
+            <td>
+              <%= link_to 'Delete', story, method: :delete,
                     data: { confirm: 'Are you sure?' },
-                    class: "button small secondary" %>
+                    class: "button small alert" %>
             </td>
           </tr>
         <% end %>

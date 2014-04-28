@@ -12,5 +12,4 @@ module StoriesHelper
     turn =  User.find( id ).email if id != current_user.id
     turn
   end
-
 end

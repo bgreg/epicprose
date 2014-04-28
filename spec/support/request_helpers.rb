@@ -17,8 +17,5 @@ module RequestHelpers
     def self.login(user)
       login_as user, scope: :user, run_callbacks: false
     end
-    def self.logout(user)
-       sign_out( user )
-    end
   end
 end

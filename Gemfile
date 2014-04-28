@@ -36,15 +36,18 @@ gem 'resque_mailer'
 group :development, :test do
   gem 'simplecov'
   gem 'sqlite3'
-  gem 'rails-footnotes'
   gem 'rspec-rails'
-  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'faker'
   gem 'launchy'
   gem 'guid'
+end
+
+group :development do
+  gem 'rails-footnotes'
+  gem 'debugger'
 end
 
 group :production do
