@@ -15,7 +15,9 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save && story.save
+
         ChapterMailer.new_chapter_email( story, @chapter ).deliver
+
         format.html { redirect_to story_path( story.id ),
                       notice: 'Chapter was successfully created.' }
         format.json { render action: 'show',
