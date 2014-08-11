@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20140324034828) do
     t.datetime "updated_at"
   end
 
-  add_index "story_roles", ["role"], name: "index_story_roles_on_role"
-  add_index "story_roles", ["story_id"], name: "index_story_roles_on_story_id"
-  add_index "story_roles", ["user_id"], name: "index_story_roles_on_user_id"
+  add_index "story_roles", ["role"], name: "index_story_roles_on_role", using: :btree
+  add_index "story_roles", ["story_id"], name: "index_story_roles_on_story_id", using: :btree
+  add_index "story_roles", ["user_id"], name: "index_story_roles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20140324034828) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "writing_prompts", force: true do |t|
     t.string   "body"
