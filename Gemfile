@@ -48,7 +48,6 @@ end
 
 group :development do
   gem 'rails-footnotes'
-  gem 'debugger'
 end
 
 group :production do
