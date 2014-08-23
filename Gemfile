@@ -53,3 +53,7 @@ end
 group :production do
   gem 'mysql2'
 end
+
+gem 'pry'
+gem 'pry-debugger'
+gem 'pry-doc'
