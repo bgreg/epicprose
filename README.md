@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/bgreg/epicprose/badges/gpa.svg)](https://codeclimate.com/github/bgreg/epicprose)
+
 == README
 * Ruby version 2.1.1
 
