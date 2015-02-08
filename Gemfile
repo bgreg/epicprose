@@ -9,7 +9,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,10 +36,11 @@ gem 'kaminari'
 group :development, :test do
   gem 'simplecov'
   gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.2'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'faker'
   gem 'launchy'
   gem 'guid'
@@ -52,8 +52,9 @@ end
 
 group :production do
   gem 'mysql2'
+  # gem 'therubyracer', platforms: :ruby
 end
 
-gem 'pry'
-gem 'pry-debugger'
-gem 'pry-doc'
+# gem 'pry'
+# gem 'pry-debugger'
+# gem 'pry-doc'

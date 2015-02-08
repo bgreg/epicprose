@@ -14,7 +14,7 @@ require 'capybara/rails'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 Capybara.ignore_hidden_elements = false
-Capybara.javascript_driver = :selenium
+Capybara.javascript_driver = :webkit
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

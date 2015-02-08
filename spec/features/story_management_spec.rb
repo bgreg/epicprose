@@ -1,6 +1,6 @@
 require "spec_helper"
 
-feature "Story Management" do
+feature "Story Management", js: true do
 
   let( :authorized_user ){ RequestHelpers::Login.create_logged_in_user }
 
@@ -8,12 +8,12 @@ feature "Story Management" do
     authorized_user.should be_an_instance_of( User )
   end
 
-  scenario "Can visit root", js:true do
+  scenario "Can visit root" do
      visit root_path( authorized_user )
      page.should have_content( "Your Stories" )
   end
 
-  scenario "should login without being retarded", js: true do
+  scenario "should login without being retarded" do
      visit root_path( authorized_user )
      page.should have_content( "Your Stories" )
   end
@@ -28,7 +28,7 @@ feature "Story Management" do
     expect( page ).to have_text( "valid co-author email required" )
   end
 
-  scenario "User creates a new story", js: true do
+  scenario "User creates a new story" do
     visit new_story_path( authorized_user )
     fill_in "story_title", with: ValidString.short
 
@@ -36,25 +36,29 @@ feature "Story Management" do
     click_button "Create Story"
     expect( page ).to have_text( "Story was successfully created." )
   end
-  # scenario "User cannot create an empty story", js: true do
-  #   visit new_story_path( authorized_user )
-  #   fill_in "story_title", with: ""
-  #
-  #   fill_in "co_author", with: ""
-  #   click_button "Create Story"
-  # end
 
-  scenario "User can delete a story", js: true do
+  scenario "User cannot create an empty story" do
     visit new_story_path( authorized_user )
-    fill_in "story_title", with: ValidString.short
+    fill_in "story_title", with: ""
+  
+    fill_in "co_author", with: ""
+    click_button "Create Story"
+  end
+
+  scenario "User can delete a story" do
+    visit new_story_path( authorized_user )
+    title  = ValidString.short
+    fill_in "story_title", with: title
 
     fill_in "co_author", with: "seed.mcseed_1@gmail.com"
     click_button "Create Story"
 
+    expect(page).to have_content("Story was successfully")
+
     visit stories_path( authorized_user )
-    expect {
-      page.evaluate_script( 'window.confirm = function() {return true;}' )
-      click_link(  "Delete"  ).first
-    }.to change( Story, :count ).by( -1 )
+    page.evaluate_script('window.confirm = function() {return true;}')
+    click_link("Delete").first
+
+    expect(page).to_not have_content(title)
   end
 end
